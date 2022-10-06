@@ -6,7 +6,7 @@ This document aims to list a set of predefined device profiles to be used in hom
 
 Profiles are defined on a node level. Each node represents a certain capability a device posesses which provides state or functionality via its properties.
 
-e.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
+E.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
 - switch
 - dimmer
 - colorlight
@@ -21,7 +21,7 @@ e.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
 
 ### Properties
 
-|id|type|settable (defualt)|retained|unit|format|comment
+|id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
 |state|`boolean`|yes|yes|-|-|`true` = ON, `false` = OFF
 |action|`enum`|yes|no|-|`toggle`| toggles state between true and false
@@ -29,7 +29,7 @@ e.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
 
 ### Comments:
 It can be argued that this is a simple binary switch and that it could be represented by an enum, however boolean is the basic definition of a binary switch and provides a uniform representation. 
-In generel there are a lot of devies with binary state representations, e.g. battery low: true/false, light: on/off, contact/door: open/closed, sensor: motion/nomotion, tilt-sensor: tilted/level,...
+In general there are a lot of devies with binary state representations, e.g. battery low: true/false, light: on/off, contact/door: open/closed, sensor: motion/nomotion, tilt-sensor: tilted/level,...
 
 We could opt for a binary state node with an enum, however this would then not properly convey the actual context for the capbility, a switch is not the same as a door-contact sensor, even though they both have essentially 2 states - but the goal should also be to provide context.
 
@@ -41,7 +41,7 @@ We could opt for a binary state node with an enum, however this would then not p
 
 ### Properties
 
-|id|type|settable (defualt)|retained|unit|format|comment
+|id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
 |brightness|`integer`|yes|yes|%|-|
 |action|`enum`|yes|no|-|`brighter,darker`| 
@@ -58,7 +58,7 @@ Another way could be a 'delta' property that simply receives +- values for adjus
 
 ### Properties
 
-|id|type|settable (defualt)|retained|unit|format|comment
+|id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
 |color|`color`|yes|yes|-|`rgb/hsv`|
 |color-temperature|`integer`|yes|yes|Mired|`min:max`| fomat specifies min max values supported by the device
