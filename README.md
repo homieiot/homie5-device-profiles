@@ -2,21 +2,46 @@
 
 This document aims to list a set of predefined device profiles to be used in home automation scenarios.
 
-# goals
+# Goals
 
 - provide a unambiguous representation of the state a device is in
 - provide a strict expectation for the user how a device behaves
 - allow flexibility in having required/optional/custom elements
 - provide hints for a UI, without specifying the UI implementation
 
-# Device structure
+# Profile structure
 
-Profiles are defined on a node level. Each node represents a certain capability a device posesses which provides state or functionality via its properties.
+Profiles are defined on 2 levels;
+1. Device level: this maps to the Homie device, and it defines the capabilities for the device
+2. Capability level: this maps to a Homie "node" within a device, and it defines the properties for the capability/node.
 
-E.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
-- switch
-- dimmer
-- colorlight
+This structure allows for reuse of Capability profiles across different Device profiles
+
+## Device profiles
+
+A device profile specifies the following:
+
+- required capabilities; eg. a Light MUST have a "switch" capability
+- optional capabilities; eg. a Light MAY have a "dimmer" capability
+- device/node/property behaviour across capabilities to make behaviour unambiguous. eg.
+    - If a device has a "color" capability, then it MUST also have a "dimmer" capability
+    - Changing the "dimmer" state MUST NOT change the "switch" state
+
+Note: devices MAY have additional Capabilities and/or Nodes, unless specified otherwise.
+
+## Capability profiles
+
+Capability profiles are defined on a node level. Each node represents a certain capability a device posesses which provides state or functionality via its properties.
+
+A Capability profile specifies the following:
+
+- required properties; eg. a Dimmer MUST have a "brightness" property
+- optional properties; eg. a Dimmer MAY have a "minimum" and "maximum" property
+- node/capability behaviour across properties to make behaviour unambiguous. eg. 
+    - if either "minimum" or "maximum" is provided, the other MUST also be provided
+    - If "minimum" and "maximum" are provided, then the actual value sent to the device will be the "brightness" value mapped to the range between "minimum" and "maximum".
+
+Note: Capabilities MAY have additional properties, unless specified otherwise.
 
 
 # Node descriptions
@@ -30,7 +55,7 @@ E.g. a dimmable RGB LED lighbulb could be represented via the following nodes:
 
 |id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
-|state|`boolean`|yes|yes|-|off,on|format specifies labels for true/false
+|state|`boolean`|yes|yes|-|off,on|format specifies labels for false/true
 |action|`enum`|yes|no|-|`toggle`| toggles state between true and false
 
 
