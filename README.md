@@ -41,7 +41,10 @@ A Capability profile specifies the following:
     - if either "minimum" or "maximum" is provided, the other MUST also be provided
     - If "minimum" and "maximum" are provided, then the actual value sent to the device will be the "brightness" value mapped to the range between "minimum" and "maximum".
 
-Note: Capabilities MAY have additional properties, unless specified otherwise.
+Note: 
+ - Capabilities MAY have additional properties, unless specified otherwise.
+ - Each node represents an instantiation of a capability. There can be more than one of the same capability on a device (e.g. 2 button capability nodes for a wall switch with 2 buttons)
+
 
 
 # Device descriptions
