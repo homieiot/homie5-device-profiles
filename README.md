@@ -69,7 +69,7 @@ The switch has no effect on the dimmer state, nor the dimmer state on the switch
 
 |state|action|result|remark|
 |-|-|-|-|
-|`switch.state=true, dimmer.brightness=50`|set `switch.state=true`|`switch.state=false, dimmer.brightness=50`|brightness is unchanged
+|`switch.state=true, dimmer.brightness=50`|set `switch.state=false`|`switch.state=false, dimmer.brightness=50`|brightness is unchanged
 |`switch.state=false, dimmer.brightness=50`|set `dimmer.brightness=60`|`switch.state=false, dimmer.brightness=60`|light remains off
 
 
