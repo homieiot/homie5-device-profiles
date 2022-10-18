@@ -41,7 +41,10 @@ A Capability profile specifies the following:
     - if either "minimum" or "maximum" is provided, the other MUST also be provided
     - If "minimum" and "maximum" are provided, then the actual value sent to the device will be the "brightness" value mapped to the range between "minimum" and "maximum".
 
-Note: Capabilities MAY have additional properties, unless specified otherwise.
+Note: 
+ - Capabilities MAY have additional properties, unless specified otherwise.
+ - Each node represents an instantiation of a capability. There can be more than one of the same capability on a device (e.g. 2 button capability nodes for a wall switch with 2 buttons)
+
 
 
 # Device descriptions
@@ -66,7 +69,7 @@ The switch has no effect on the dimmer state, nor the dimmer state on the switch
 
 |state|action|result|remark|
 |-|-|-|-|
-|`switch.state=true, dimmer.brightness=50`|set `switch.state=true`|`switch.state=false, dimmer.brightness=50`|brightness is unchanged
+|`switch.state=true, dimmer.brightness=50`|set `switch.state=false`|`switch.state=false, dimmer.brightness=50`|brightness is unchanged
 |`switch.state=false, dimmer.brightness=50`|set `dimmer.brightness=60`|`switch.state=false, dimmer.brightness=60`|light remains off
 
 
