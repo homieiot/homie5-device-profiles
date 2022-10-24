@@ -75,6 +75,11 @@ The switch has no effect on the dimmer state, nor the dimmer state on the switch
 
 # Capability descriptions
 
+Considerations:
+
+- The model is not necessarily the same as the UI. An example of this is a dimmable light; `brightness` is typically 0-100%. But 0 would be ambiguous for the user, because powered on, at level 0% still means it is off. So the `brightness` model should be 1-100% to make it unambiguous. It is important to note that the model is the STATE representation, not the UI representation. A UI is still free in how it renders the state; a single slider 0-100, a switch and 1-100, or a switch and 0-100.
+- Not every device is controllable. Hence the `settable` property should generally be `yes/no` at the discretion of the implementor.
+
 ## Switch
 `type`: "homie-capability-profile/v1/type=switch"
 
@@ -84,7 +89,7 @@ The switch has no effect on the dimmer state, nor the dimmer state on the switch
 
 |id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
-|state|`boolean`|yes|yes|-|off,on|format specifies labels for false/true
+|state|`boolean`|yes/no|yes|-|off,on|format specifies labels for false/true
 |action|`enum`|yes|no|-|`toggle`| toggles state between true and false
 
 
@@ -106,12 +111,10 @@ The value could also be specified as an `enum` all together, but having a `boole
 
 |id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
-|brightness|`integer`|yes|yes|%|`1:100`|0 is not allowed since it would be ambiguous
+|brightness|`integer`|yes/no|yes|%|`1:100`|0 is not allowed since it would be ambiguous
 |action|`enum`|yes|no|-|`brighter,darker`| 
 
 ### Comments:
-`brightness` is restricted from 1 to 100%, 0 would be ambiguous. It is important to note that this is the STATE representation, not the UI representation. A UI is still free in how it renders the state; a single slider 0-100, a switch and 1-100, or a switch and 0-100.
-
 The brighter and darker actions are problematic in so far as that we would need to define the delta adjustment value. But depending on the devices practical values could be difficult to align.
 An argument could be made to completly remove this feature all together but it has proved to be rather practical in home automation scenarios.
 Another way could be a 'delta' property that simply receives +- values for adjustments.
@@ -125,5 +128,5 @@ Another way could be a 'delta' property that simply receives +- values for adjus
 
 |id|type|settable (default)|retained|unit|format|comment
 |-|-|-|-|-|-|-|
-|color|`color`|yes|yes|-|`rgb/hsv`|
+|color|`color`|yes/no|yes|-|`rgb/hsv`|
 |color-temperature|`integer`|yes|yes|Mired|`min:max`| fomat specifies min max values supported by the device
