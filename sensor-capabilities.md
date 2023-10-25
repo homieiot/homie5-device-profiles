@@ -86,7 +86,7 @@ unit | - | the `unit` attribute on this property MUST be specified, see the Homi
 format | - | the `format` attribute SHOULD be specified for precision, minimum and maximum values.
 type | "`float`" | To represent integers, us the `format` attribute
 
-If any of the calibration properties are present, then the value is calculated as: `value = (raw-value + offset) * factor`
+If any of the calibration properties are present, then the value is calculated as: `value = (raw-value + offset) * factor`. The `offset` defaults to `0` if not present, and the `factor` defaults to `1` if not present.
 
 #### raw
 
@@ -139,15 +139,15 @@ Specifically typed sensors are available for the most common ones. Each with the
 
 ### Profile-names
 
-Profile                     | Format (false/true) | description
-----------------------------|----------------|-----------------
-`homie-binary-sensor/1/0`   | any            | This is the common version if no specific profile is available. 
-`homie-sensor-power-switch` | "`off,on`"     | Any power like application; light, switch, pump, etc.
-`homie-sensor-window`       | "`close,open`" | Window and door sensors
-`homie-sensor-valve`        | "`close,open`" | Valve sensors
-`homie-sensor-presence`     | "`no-presence,presence`" | Presence and motion  sensors
-`homie-sensor-heat-request` | "`off,heat`"   | Thermostat device requesting heating
-`homie-sensor-cool-request` | "`off,cool`"   | Thermostat device requesting cooling
+Profile                         | Format (false/true) | description
+--------------------------------|----------------|-----------------
+`homie-sensor-binary/1/0`       | any            | This is the common version if no specific profile is available. 
+`homie-sensor-power-switch/1/0` | "`off,on`"     | Any power like application; light, switch, pump, etc.
+`homie-sensor-window/1/0`       | "`close,open`" | Window and door sensors
+`homie-sensor-valve/1/0`        | "`close,open`" | Valve sensors
+`homie-sensor-presence/1/0`     | "`no-presence,presence`" | Presence and motion  sensors
+`homie-sensor-heat-request/1/0` | "`off,heat`"   | Thermostat device requesting heating
+`homie-sensor-cool-request/1/0` | "`off,cool`"   | Thermostat device requesting cooling
 
 ### Properties
 
