@@ -1,6 +1,6 @@
-# Sensor capability descriptions
+# Sensor & Input capability descriptions
 
-This capability description describes a generic sensor node.
+This capability description describes a generic sensor node, and related input nodes (that take sensor values).
 
 ## Sensor introduction
 
@@ -8,11 +8,27 @@ A sensor node measures a single sensor value. The value is published under the p
 
 They are very strictly defined, allowing only for a single `unit` or `format` attribute. This allows MQTT based querying of specific sensor types, without having to parse the device description. See the topic structure at [Advertizing](#advertizing).
 
+### Inputs
+
+Related to sensors are "inputs". To be used in devices that take a specific value as an input to operate, typically the value originated from a sensor. For example:
+
+- a thermostat taking a temperature sensor as input
+- a fan using a VOC sensor to ventilate based on air quality
+
+The sensors are described below, their related inputs are identical except:
+
+* the profile name uses "input" instead of "sensor", so a generic sensor has profile name
+  "`homie-sensor-numeric/1/0`", and a generic input has profile name "`homie-input-numeric/1/0`"
+* if an "input" has a "`raw`" property, then that property MUST be settable. If it doesn't have a "`raw`" property, then the "`value`" property MUST be settable.
+
+### Virtual sensors
+
 Sensors can be virtual sensors, in the sense that the value is not actually measured, but set by a Homie controller.
 For example;
 
-- a temperature sensor that is set by a controller as the averaga value of all temperature sensors in a room.
-- a motion sensor called "ground-floor", that has state "presence" as long as any of the sensors on the ground floor is tripped.
+- a virtual temperature sensor that is set by a controller as the averaga value of all temperature sensors in a room.
+- a virtual motion sensor called "ground-floor", that has state "presence" as long as any of the sensors on the ground floor is tripped.
+
 
 ## Advertizing
 
@@ -101,6 +117,24 @@ retained | yes |
 type | `float` | 
 unit | any | Can be any unit, but most likely the same as the `value` property (or a corresponding type, eg. `°F` as the `raw` type, with `°C` as the `value` type)
 
+#### raw-topic
+
+The "`raw-topic`" property is a MQTT topic where the raw-value should be fetched (by subscribing to it). If "`raw-topic`" is present
+the "`raw`" property MUST also be present (and MAY be settable). 
+If the value is set to an empty string, then the topic subscription should be cancelled. 
+
+The behaviour when receiving a value update from the subscription should be as if the "`raw`" property was settable,
+and received a value on its "`/set`" topic.
+
+element | value | remark
+-|-|-
+property-id | "`raw-topic`" |
+required | no |
+settable | yes |
+retained | yes |
+type | `string` |
+unit | n.a. | 
+
 #### calibration offset
 
 The `offset` property is an optional property to calibrate the raw sensor value.
@@ -126,6 +160,19 @@ settable | yes |
 retained | yes |
 type | `float` | 
 unit | - |
+
+#### calibration invert
+
+The `invert` property is an optional property to invert the raw sensor value.
+
+element | value | remark
+-|-|-
+property-id | "`invert`" |
+required | no |
+settable | yes |
+retained | yes |
+type | "`boolean`" | 
+format | "`no,yes`"
 
 
 
@@ -177,6 +224,24 @@ settable | yes/no | mostly non-settable, except for virtual sensors.
 retained | yes |
 type | "`boolean`" | 
 
+#### raw-topic
+
+The "`raw-topic`" property is a MQTT topic where the raw-value should be fetched (by subscribing to it). If "`raw-topic`" is present
+the "`raw`" property MUST also be present (and MAY be settable). 
+If the value is set to an empty string, then the topic subscription should be cancelled. 
+
+The behaviour when receiving a value update from the subscription should be as if the "`raw`" property was settable,
+and received a value on its "`/set`" topic.
+
+element | value | remark
+-|-|-
+property-id | "`raw-topic`" |
+required | no |
+settable | yes |
+retained | yes |
+type | `string` |
+unit | n.a. | 
+
 #### invert
 
 The `invert` property is an optional property to invert the raw sensor value.
@@ -191,3 +256,28 @@ type | "`boolean`" |
 format | "`no,yes`"
 
 
+## Unit conversions
+
+Unit conversions can be done using the delta and factor properties
+
+Profile                        | Unit  | Raw unit | delta | factor
+-------------------------------|-------|----------|-------|-------
+`homie-sensor-temperature/1/0` | `°C`  | `°F`     | -32   | 0.555556 (== 5/9)
+`homie-sensor-volume/1/0`      | `L`   | `gal`    |       | 3.78541
+`homie-sensor-volume/1/0`      | `L`   | `m³`     | 0     | 0.001
+`homie-sensor-volt/1/0`        | `V`   | | |
+`homie-sensor-current/1/0`     | `A`   | | |
+`homie-sensor-power/1/0`       | `W`   | `kW`     | 0     | 0.001
+`homie-sensor-energy/1/0`      | `kWh` | | |
+`homie-sensor-frequency/1/0`   | `Hz`  | `rpm`    | 0     | 0.01666667 (== 1/60)
+`homie-sensor-battery/1/0`     | `%`   | | |
+`homie-sensor-distance/1/0`    | `m`   | `ft`     | 0     | 0.3048
+`homie-sensor-speed/1/0`       | `m/s` | `kn`     | 0     | 0.514444
+`homie-sensor-speed/1/0`       | `m/s` | `km/h`   | 0     | 0.277778
+`homie-sensor-pressure/1/0`    | `Pa`  | `psi`    | 0     | 6894.76
+`homie-sensor-light/1/0`       | `lx`  | | |
+`homie-sensor-gas-co/1/0`      | `ppm` | | |
+`homie-sensor-gas-co2/1/0`     | `ppm` | | |
+`homie-sensor-gas-ch4/1/0`     | `ppm` | | |
+`homie-sensor-gas-voc/1/0`     | `ppm` | | |
+`homie-sensor-humidity/1/0`    | `%`   | | |
