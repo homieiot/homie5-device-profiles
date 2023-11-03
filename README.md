@@ -15,7 +15,36 @@ Profiles are defined on 2 levels;
 1. Device level: this maps to the Homie device, and it defines the capabilities for the device
 2. Capability level: this maps to a Homie "node" within a device, and it defines the properties for the capability/node.
 
-This structure allows for reuse of Capability profiles across different Device profiles
+This structure allows for reuse of Capability profiles across different Device profiles.
+
+## Profile identifiers and versioning
+
+Profile identifiers look like these examples:
+
+    iot.homie.dev:light:v1.0
+    iot.homie.cap:switch:v1.1
+
+This makes an identifier based of 3 components, separated by `':'` (colon):
+1. domain (reverse) to enable custom, extensible, unique identifiers
+    - format: reverse ordered domain name (case insensitive), this allows anyone to register their own domain and create their own unique device/capability profile.
+    - Note that despite the fact that there is (not yet) a domain `home.iot`, it is by means of this specification reserved for official Homie standardized profiles.
+    - domain `dev.homie.iot` is reserved for offical Homie devices
+    - domain `cap.homie.iot` is reserved for offical Homie capabilities
+3. The profile name;
+    - format: alphanumeric characters(a-z, 0-9), must start with a-z (case insensitive)
+4. The profile version;
+    - the format is the [Semantic Versioning](https://semver.org/) version, prefixed with a `v`
+    - when using the profile to describe a device or capability, the Major and Minor version MUST be included, everything else (Patch, pre-release, etc.) MUST NOT be included.
+    - when using to reference the specification document, all details may be included.
+
+### Versioning
+
+The identifiers refer to 2 different types of things;
+1. the specification document of the device/capability
+2. implementations of a device/capability
+
+Since a Patch level version identifier indicates a fix or other non-functional change in the specification document. It should not be included when listing/announcing device capabilities. In those cases only Major and Minor version identifiers should be included, since those are the only ones that carry "functional" information.
+
 
 ## Device profiles
 
@@ -50,7 +79,7 @@ Note:
 # Device descriptions
 
 ## Light
-`type`: "homie-device-profile/v1/type=light"
+`type`: "iot.homie.dev:light:v1.0"
 
 This device represents binary and dimmable lights with no color.
 
@@ -58,8 +87,8 @@ This device represents binary and dimmable lights with no color.
 
 |id|type|optional|comment
 |-|-|-|-|
-|switch|`homie-capability-profile/v1/type=switch`|no|n.a.
-|dimmer|`homie-capability-profile/v1/type=dimmer`|yes|n.a
+|switch|`iot.homie.cap:switch:v1.0`|no|n.a.
+|dimmer|`iot.homie.cap:dimmer:v1.0`|yes|n.a
 
 The `id` is the required name on the Homie "Node" level
 
@@ -76,7 +105,7 @@ The switch has no effect on the dimmer state, nor the dimmer state on the switch
 # Capability descriptions
 
 ## Switch
-`type`: "homie-capability-profile/v1/type=switch"
+`type`: "iot.homie.cap:switch:v1.0"
 
 *Example usages*: Represent a switchable actor, e.g. wall socket plug, light bulb.
 
@@ -98,7 +127,7 @@ This format entry requires a change to the Homie protocol
 The value could also be specified as an `enum` all together, but having a `boolean` provides a hint to a UI as to how to render the property (see the "goals" section").
 
 ## Dimmer
-`type`: "homie-capability-profile/v1/type=dimmer"
+`type`: "iot.homie.cap:dimmer:v1.0"
 
 *Example usages*: Dimmable light.
 
@@ -117,7 +146,7 @@ An argument could be made to completly remove this feature all together but it h
 Another way could be a 'delta' property that simply receives +- values for adjustments.
 
 ## Colorlight
-`type`: "homie-capability-profile/v1/type=colorlight"
+`type`: "iot.homie.cap:colorlight:v1.0"
 
 *Example usages*: Color control for a lightbulb or LED strip.
 
