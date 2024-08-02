@@ -1,8 +1,8 @@
-# Introduction
+# Introduction to Homie Profiles
 
 ## Abstract
 
-This document aims to list a set of predefined device and capability profiles to be used in home automation scenarios.
+This document aims to list a set of predefined device and capability profiles to be used in IoT and home automation scenarios.
 Where the [Homie Convention](https://homieiot.github.io/) provides a standardized way for device discovery, descriptions,
 and value/event update publishing, the profiles defined here will add meaning to those devices, nodes and properties published.
 
@@ -21,29 +21,18 @@ The official Homie Profiles are documented in this project.
 
 - provide a unambiguous representation of the state a device is in
 - provide a strict expectation for the user how a device behaves
+- make it easy to discover compatible devices/capabilities
 - allow flexibility in having required/optional/custom elements
 - provide hints for a UI, without specifying the UI implementation
 
-## Profile structure
+## Types of profiles
 
 Profiles are defined on 2 levels;
 
-1. Device level: this maps to the Homie device, and it defines the capabilities for the device
-2. Capability level: this maps to a Homie "node" within a device, and it defines the properties for the capability/node.
+1. Capability level: this maps to a Homie "node" within a device, and it defines the properties for the capability/node.
+2. Device level: this maps to the Homie device, and it defines the capabilities for the device
 
 This structure allows for reuse of Capability profiles across different Device profiles
-
-### Device profiles
-
-A device profile specifies the following:
-
-- required capabilities; eg. a Light MUST have a "switch" capability
-- optional capabilities; eg. a Light MAY have a "dimmer" capability
-- device/node/property behaviour across capabilities to make behaviour unambiguous. eg.
-    - If a device has a "color" capability, then it MUST also have a "dimmer" capability
-    - Changing the "dimmer" state MUST NOT change the "switch" state
-
-Note: devices MAY have additional Capabilities and/or Nodes, unless specified otherwise.
 
 ### Capability profiles
 
@@ -53,93 +42,118 @@ A Capability profile specifies the following:
 
 - required properties; eg. a Dimmer MUST have a "brightness" property
 - optional properties; eg. a Dimmer MAY have a "minimum" and "maximum" property
-- node/capability behaviour across properties to make behaviour unambiguous. eg.
+- node/capability behaviour across properties to make behaviour unambiguous. For example:
     - if either "minimum" or "maximum" is provided, the other MUST also be provided
     - If "minimum" and "maximum" are provided, then the actual value sent to the device will be the "brightness" value mapped to the range between "minimum" and "maximum".
 
 Note:
+
  - Capabilities MAY have additional properties, unless specified otherwise.
  - Each node represents an instantiation of a capability. There can be more than one of the same capability on a device (e.g. 2 button capability nodes for a wall switch with 2 buttons)
 
+### Device profiles
+
+A device profile specifies the following:
+
+- required capabilities; eg. a Light MUST have a "switch" capability
+- optional capabilities; eg. a Light MAY have a "dimmer" capability
+- device/node/property behaviour across capabilities to make behaviour unambiguous. For example:
+    - If a device has a "color" capability, then it MUST also have a "dimmer" capability
+    - Changing the "dimmer" state MUST NOT change the "switch" state
+
+Note: devices MAY have additional Capabilities and/or Nodes, unless specified otherwise.
 
 
-## Device descriptions
+## Advertizing
 
-### Light
-`type`: "homie-device-profile/v1/type=light"
+The way the profile is announced is 2 fold. It is advertized using a Homie MQTT topic, as well as in the JSON description document.
+The components of the profile consist of the profile name, as well as the supported version (major+minor).
 
-This device represents binary and dimmable lights with no color.
+### Capability advertizing
 
-#### Device capabilities
+The `node` level attribute where to publish the profile in use is: `$profile`.
 
-|id|type|optional|comment
-|-|-|-|-|
-|switch|`homie-capability-profile/v1/type=switch`|no|n.a.
-|dimmer|`homie-capability-profile/v1/type=dimmer`|yes|n.a
+The topic will have the name and the major version number, where the value contains the minor version number;
 
-The `id` is the required name on the Homie "Node" level
-
-#### Inter-capability behaviour
-
-The switch has no effect on the dimmer state, nor the dimmer state on the switch. Examples:
-
-|state|action|result|remark|
-|-|-|-|-|
-|`switch.state=true, dimmer.brightness=50`|set `switch.state=false`|`switch.state=false, dimmer.brightness=50`|brightness is unchanged
-|`switch.state=false, dimmer.brightness=50`|set `dimmer.brightness=60`|`switch.state=false, dimmer.brightness=60`|light remains off
+    homie/5/[device]/[node]/$profile/[profile]/[maj] → "[min]"
 
 
-## Capability descriptions
+The device description JSON document, in the node-object;
 
-### Switch
-`type`: "homie-capability-profile/v1/type=switch"
+```json
+  {
+    ...,
+    "$profile": ["[profile]/[maj]/[min]"],
+    ...
+  }
+```
+**Note**: in the JSON document the `$profile` property holds an `array` value, not a single string. See [versioning](#versioning) below.
 
-*Example usages*: Represent a switchable actor, e.g. wall socket plug, light bulb.
+So for a `homie-sensor-temperature`, version `1.3`, documented as `homie-sensor-temperature/1/3` the capability would be advertized as:
 
-#### Properties
+    homie/5/[device]/[node]/$profile/homie-sensor-temperature/1 → "3"
 
-|id|type|settable (default)|retained|unit|format|comment
-|-|-|-|-|-|-|-|
-|state|`boolean`|yes|yes|-|off,on|format specifies labels for false/true
-|action|`enum`|yes|no|-|`toggle`| toggles state between true and false
+```json
+  {
+    ...,
+    "$profile": ["homie-sensor-temperature/1/3"],
+    ...
+  }
+```
+
+### Capability searching
+
+For controllers looking to find a specific type of device they are compatible with, they can use the
+published MQTT topic to query for the specific capabilities. For example:
+
+Topic subscription | result
+-------------------|--------
+`homie/5/*/*/$profile/homie-sensor-temperature/*` | Will return all `homie-sensor-temperature` capabilities
+`homie/5/mydevice/*/$profile/homie-sensor-temperature/*` | Will return all `homie-sensor-temperature` capabilities of device `mydevice`
+`homie/5/*/*/$profile/homie-sensor-temperature/2` | Will return all `homie-sensor-temperature` capabilities compatible with version `2`
+
+By parsing the returned topics and values, all relevant data can be extracted:
+
+- device id
+- node id
+- supported capability major version
+- supported capability minor version
 
 
-#### Comments:
-Since a boolean does not carry any context, the format property specifies the labels for the boolean values.
-The format is the same as an `enum` where `false` is the first and `true` is the second entry.
-Reasoning is that if the `enum` is an `array`, and `false` is often represented as 0 and `true` often as 1. Then those 0/1 values are the indices of the format `array` to ease implementations.
 
-This format entry requires a change to the Homie protocol
+## Versioning
 
-The value could also be specified as an `enum` all together, but having a `boolean` provides a hint to a UI as to how to render the property (see the "goals" section").
+Versioning is based on SemVer and is only done using the major and minor version components. This is because the profiles are
+description documents describing features and functionality. Any patch update would only be a clarification, never a change. Hence
+it does not make sense to advertize or search for versions including a patch version.
 
-### Dimmer
-`type`: "homie-capability-profile/v1/type=dimmer"
+Since minor versions are backward compatible within a major version, there is no need to ever list multiple minor versions.
+A device should only advertize the latest minor version it is compatible with. Eg. if a device advertizes version `1.2`, it
+is implicit that it also supports versions `1.0` and `1.1` of the same profile.
 
-*Example usages*: Dimmable light.
+If a device or a node supports either multiple profiles, or supports multiple major versions of a profile, then they can all
+be advertized. Here's an example of a capability supporting 2 profiles, and one of them in 2 versions:
 
-#### Properties
+    homie/5/[device]/[node]/$profile/homie-sensor-temperature/1 → "2"
+    homie/5/[device]/[node]/$profile/homie-sensor-temperature/2 → "0"
+    homie/5/[device]/[node]/$profile/power-switch/1 → "3"
 
-|id|type|settable (default)|retained|unit|format|comment
-|-|-|-|-|-|-|-|
-|brightness|`integer`|yes|yes|%|`1:100`|0 is not allowed since it would be ambiguous
-|action|`enum`|yes|no|-|`brighter,darker`|
+```json
+  {
+    ...,
+    "$profile": [
+      "homie-sensor-temperature/1/2",
+      "homie-sensor-temperature/2/0",
+      "power-switch/1/3"
+    ],
+    ...
+  }
+```
 
-#### Comments:
-`brightness` is restricted from 1 to 100%, 0 would be ambiguous. It is important to note that this is the STATE representation, not the UI representation. A UI is still free in how it renders the state; a single slider 0-100, a switch and 1-100, or a switch and 0-100.
+So overall profile support in this example is:
 
-The brighter and darker actions are problematic in so far as that we would need to define the delta adjustment value. But depending on the devices practical values could be difficult to align.
-An argument could be made to completly remove this feature all together but it has proved to be rather practical in home automation scenarios.
-Another way could be a 'delta' property that simply receives +- values for adjustments.
+- `homie-sensor-temperature`, versions `1.0` to `1.2`, and `2.0`
+- `power-switch`, versions `1.0` to `1.3`
 
-### Colorlight
-`type`: "homie-capability-profile/v1/type=colorlight"
-
-*Example usages*: Color control for a lightbulb or LED strip.
-
-#### Properties
-
-|id|type|settable (default)|retained|unit|format|comment
-|-|-|-|-|-|-|-|
-|color|`color`|yes|yes|-|`rgb/hsv`|
-|color-temperature|`integer`|yes|yes|Mired|`min:max`| fomat specifies min max values supported by the device
+**Note**: for this to work it is essential that there are no naming collissions between the properties used in
+each of the profiles.

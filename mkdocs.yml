@@ -1,2 +1,10 @@
 site_name: Homie5 Profiles
 theme: readthedocs
+nav:
+  - index.md
+  - sensors-numeric.md
+  - sensors-binary.md
+  - inputs.md
+  - contributing.md
+  - LICENSE.md
+  - old_stuff.md
