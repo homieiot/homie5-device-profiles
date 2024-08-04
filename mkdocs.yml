@@ -2,6 +2,7 @@ site_name: Homie5 Profiles
 theme: readthedocs
 nav:
   - index.md
+  - switch.md
   - sensors-numeric.md
   - sensors-binary.md
   - inputs.md
