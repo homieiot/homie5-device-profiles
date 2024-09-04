@@ -1,4 +1,4 @@
-# Switch capability descriptions
+# Capability: Switch
 
 This capability description describes a generic switch node, and derived specific switches.
 
@@ -8,6 +8,122 @@ A switch is an actor that can switch between 2 states, indicated by a boolean va
 
 Specifically typed switches are available for the most common ones. Each with their own profile name and version. The Node layout is the same for all, they only differ by supported `format` labels.
 
+### Examples
+
+A Homie device with 1 node as a valve.
+
+#### Minimal example
+
+This minimal example only implements the required properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Lawn water valve",
+  "version": 3,
+  "nodes": {
+
+    "lawn-valve": {
+      "$profile": ["homie-valve/1/0"],
+      "name": "Lawn valve",
+      "value": {
+        "settable": true,
+        "retained": true,
+        "type": "boolean",
+        "format": "close,open"
+      }
+    }
+
+  }
+}
+```
+
+Topics:
+
+```
+homie/5/lawn-water/$state            → "ready"
+homie/5/lawn-water/$description      → "{... the above json doc ...}"
+homie/5/lawn-water/lawn-valve/$profile/homie-valve/1 → "0"
+homie/5/lawn-water/lawn-valve/value  → "false"
+```
+
+#### Full example
+
+This example implements a sensor including all optional properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Lawn water valve",
+  "version": 7,
+  "nodes": {
+
+    "lawn-valve": {
+      "$profile": ["homie-valve/1/0"],
+      "name": "Lawn valve",
+      "value": {
+        "settable": true,
+        "retained": true,
+        "type": "boolean",
+        "format": "close,open"
+      },
+      "switch-time": {
+        "settable": true,
+        "retained": true,
+        "type": "float",
+        "format": "0:",
+        "unit": "s"
+      },
+      "enable-time": {
+        "settable": true,
+        "retained": true,
+        "type": "float",
+        "format": "0:",
+        "unit": "s"
+      },
+      "disable-time": {
+        "settable": true,
+        "retained": true,
+        "type": "float",
+        "format": "0:",
+        "unit": "s"
+      },
+      "auto-disable": {
+        "settable": true,
+        "retained": true,
+        "type": "float",
+        "format": "0:",
+        "unit": "s"
+      },
+      "auto-enable": {
+        "settable": true,
+        "retained": true,
+        "type": "float",
+        "format": "0:",
+        "unit": "s"
+      }
+
+    }
+  }
+}
+```
+
+Topics:
+```
+homie/5/lawn-water/$state                   → "ready"
+homie/5/lawn-water/$description             → "{... the above json doc ...}"
+homie/5/lawn-water/lawn-valve/$profile/homie-valve/1 → "0"
+homie/5/lawn-water/lawn-valve/value         → "false"
+homie/5/lawn-water/lawn-valve/switch-time   → "180"
+homie/5/lawn-water/lawn-valve/enable-time   → "0"
+homie/5/lawn-water/lawn-valve/disable-time  → "200"
+homie/5/lawn-water/lawn-valve/auto-disable  → "3600"
+homie/5/lawn-water/lawn-valve/auto-enable   → "0"
+```
 
 ## homie-switch/1/0
 
@@ -197,63 +313,21 @@ format | "`0:`" | Value must be 0 or more. If `0` the auto-enable behaviour is d
 unit | `"s"` | The time is provided in seconds
 
 
+## homie-power-switch/1/0
 
-## homie-sensor-power-switch/1/0
+The profile name is: `homie-power-switch/1/0`
 
-The profile name is: `homie-sensor-power-switch/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
+The implementation is identical to the [`homie-switch/1/0`](#homie-switch10) capability with the
 following modifications:
 
 - the `format` attribute of the `value` property MUST be `"off,on"`.
 
 
-## homie-sensor-window/1/0
+## homie-valve/1/0
 
-The profile name is: `homie-sensor-window/1/0`
+The profile name is: `homie-valve/1/0`
 
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
+The implementation is identical to the [`homie-switch/1/0`](#homie-switch10) capability with the
 following modifications:
 
 - the `format` attribute of the `value` property MUST be `"closed,open"`.
-
-
-## homie-sensor-valve/1/0
-
-The profile name is: `homie-sensor-valve/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"closed,open"`.
-
-
-## homie-sensor-presence/1/0
-
-The profile name is: `homie-sensor-presence/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"no-presence,presence"`.
-
-
-## homie-sensor-heat-request/1/0
-
-The profile name is: `homie-sensor-heat-request/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"off,heat"`.
-
-
-## homie-sensor-cool-request/1/0
-
-The profile name is: `homie-sensor-cool-request/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"off,cool"`.
-

@@ -1,4 +1,4 @@
-# Binary sensors capability descriptions
+# Capability: Sensor - Binary
 
 This capability description describes a generic binary sensor node, and derived unit specific sensors.
 
@@ -7,6 +7,108 @@ This capability description describes a generic binary sensor node, and derived 
 A binary sensor is a sensor for any boolean type data, eg. on/off, open/close, presence/no-presence etc.
 
 Specifically typed sensors are available for the most common ones. Each with their own profile name and version. The Node layout is the same for all, they only differ by supported `format` labels.
+
+### Examples
+
+A Homie device with 1 node as a presence/motion sensor.
+
+#### Minimal example
+
+This minimal example only implements the required properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Motion sensor",
+  "version": 3,
+  "nodes": {
+
+    "livingroom": {
+      "$profile": ["homie-sensor-presence/1/0"],
+      "name": "Livingroom Motion",
+      "value": {
+        "settable": false,
+        "retained": true,
+        "type": "boolean",
+        "format": "no-presence,presence"
+      }
+    }
+
+  }
+}
+```
+
+Topics:
+
+```
+homie/5/living-motion/$state            → "ready"
+homie/5/living-motion/$description      → "{... the above json doc ...}"
+homie/5/living-motion/livingroom/$profile/homie-sensor-presence/1 → "0"
+homie/5/living-motion/livingroom/value  → "false"
+```
+
+#### Full example
+
+This example implements a sensor including all optional properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Motion sensor livingroom",
+  "version": 7,
+  "nodes": {
+
+    "livingroom": {
+      "$profile": ["homie-sensor-presence/1/0"],
+      "name": "Livingroom Motion",
+      "value": {
+        "settable": false,
+        "retained": true,
+        "type": "boolean",
+        "format": "no-presence,presence"
+      },
+      "raw": {
+        "settable": true,
+        "retained": true,
+        "type": "boolean"
+      },
+      "raw-topic": {
+        "settable": true,
+        "retained": true,
+        "type": "string"
+      },
+      "topic-falsy": {
+        "settable": true,
+        "retained": true,
+        "type": "string"
+      },
+      "invert": {
+        "settable": true,
+        "retained": true,
+        "type": "boolean",
+        "format": "no,yes"
+      }
+
+    }
+  }
+}
+```
+
+Topics:
+```
+homie/5/living-motion/$state                  → "ready"
+homie/5/living-motion/$description            → "{... the above json doc ...}"
+homie/5/living-motion/livingroom/$profile/homie-sensor-presence/1 → "0"
+homie/5/living-motion/livingroom/value        → "false"
+homie/5/living-motion/livingroom/raw          → "true"
+homie/5/living-motion/livingroom/raw-topic    → "homeassistant/sensor/some/topic"
+homie/5/living-motion/livingroom/topic-falsy  → "false,False,off,Off,0"
+homie/5/living-motion/livingroom/invert       → "true"
+```
 
 ### Virtual sensors
 
@@ -60,11 +162,29 @@ the "`raw`" property MUST also be present (and MAY be settable).
 If the value is set to an empty string, then the topic subscription should be cancelled.
 
 The behaviour when receiving a value update from the subscription should be as if the "`raw`" property was settable,
-and received a value on its "`/set`" topic.
+and received a value on its "`/set`" topic. See [`topic-falsy`](#topic-falsy) on how to interpret received values from the subscription.
 
 attributes | value | remark
 -|-|-
 property-id | "`raw-topic`" |
+settable | `true` |
+retained | `true` |
+type | `string` |
+unit | n.a. |
+
+#### topic-falsy
+
+The "`topic-falsy`" property (optional) takes a comma separated list of values that are considered a boolean `false`.
+Any value recieved over the topic indicated by "`topic-falsy`", is checked against this list. If there is a match
+the value is considered a boolean `false`, otherwise a boolean `true`. Leading- and trailing whitespace is significant, and
+the values are case-sensitive.
+
+If "`topic-falsy`" is present the "`raw-topic`" property MUST also be present. If "`topic-falsy`" is not present then
+only a string "`false`" is considered a falsy value.
+
+attributes | value | remark
+-|-|-
+property-id | "`topic-falsy`" |
 settable | `true` |
 retained | `true` |
 type | `string` |
@@ -121,24 +241,4 @@ The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor
 following modifications:
 
 - the `format` attribute of the `value` property MUST be `"no-presence,presence"`.
-
-
-## homie-sensor-heat-request/1/0
-
-The profile name is: `homie-sensor-heat-request/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"off,heat"`.
-
-
-## homie-sensor-cool-request/1/0
-
-The profile name is: `homie-sensor-cool-request/1/0`
-
-The implementation is identical to the [`homie-sensor-binary/1/0`](#homie-sensor-binary10) capability with the
-following modifications:
-
-- the `format` attribute of the `value` property MUST be `"off,cool"`.
 

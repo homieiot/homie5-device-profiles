@@ -1,11 +1,12 @@
 site_name: Homie5 Profiles
 theme: readthedocs
+#theme: simple-blog
 nav:
   - index.md
-  - switch.md
-  - sensors-numeric.md
-  - sensors-binary.md
-  - inputs.md
+  - cap-inputs.md
+  - cap-sensors-numeric.md
+  - cap-sensors-binary.md
+  - cap-switch.md
   - contributing.md
   - LICENSE.md
   - old_stuff.md

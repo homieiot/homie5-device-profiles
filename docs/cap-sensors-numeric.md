@@ -1,4 +1,4 @@
-# Numeric sensors capability descriptions
+# Capability: Sensor - Numeric
 
 This capability description describes a generic numeric sensor node, and derived unit-specific sensors.
 
@@ -7,6 +7,111 @@ This capability description describes a generic numeric sensor node, and derived
 A sensor node measures a single sensor value. The value is published under the property `value`. The descriptions vary by the type of value measured. Depending on the type of sensor, some properties and/or requirements my vary.
 
 They are very strictly defined, allowing only for a single `unit` or `format` attribute. This allows MQTT based querying of specific sensor types, without having to parse the device description.
+
+### Examples
+
+A Homie device with 1 node as a temperature sensor.
+
+#### Minimal example
+
+This minimal example only implements the required properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Super Car",
+  "version": 7,
+  "nodes": {
+
+    "engine-temp": {
+      "$profile": ["homie-sensor-temperature/1/0"],
+      "name": "Engine temperature",
+      "value": {
+        "settable": false,
+        "retained": true,
+        "unit": "°C",
+        "type": "float",
+        "format": "0:40:0.5",
+      }
+    }
+
+  }
+}
+```
+
+Topics:
+
+```
+homie/5/supercar/$state             → "ready"
+homie/5/supercar/$description       → "{... the above json doc ...}"
+homie/5/supercar/engine-temp/$profile/homie-sensor-temperature/1 → "0"
+homie/5/supercar/engine-temp/value  → "75.0"
+```
+
+#### Full example
+
+This example implements a sensor including all optional properties.
+
+Description:
+
+```json
+{
+  "homie": "5.0",
+  "name": "Super Car",
+  "version": 7,
+  "nodes": {
+
+    "engine-temp": {
+      "$profile": ["homie-sensor-temperature/1/0"],
+      "name": "Engine temperature",
+      "value": {
+        "settable": false,
+        "retained": true,
+        "unit": "°C",
+        "type": "float",
+        "format": "0:120:0.5"
+      },
+      "raw": {
+        "settable": true,
+        "retained": true,
+        "unit": "°F",
+        "type": "float",
+        "format": "0:248"
+      },
+      "raw-topic": {
+        "settable": true,
+        "retained": true,
+        "type": "string"
+      },
+      "offset": {
+        "settable": true,
+        "retained": true,
+        "type": "float"
+      },
+      "factor": {
+        "settable": true,
+        "retained": true,
+        "type": "float"
+      }
+
+    }
+  }
+}
+```
+
+Topics:
+```
+homie/5/supercar/$state                 → "ready"
+homie/5/supercar/$description           → "{... the above json doc ...}"
+homie/5/supercar/engine-temp/$profile/homie-sensor-temperature/1 → "0"
+homie/5/supercar/engine-temp/value      → "75.0"
+homie/5/supercar/engine-temp/raw        → "167"
+homie/5/supercar/engine-temp/raw-topic  → "homeassistant/sensor/some/topic"
+homie/5/supercar/engine-temp/offset     → "-32"
+homie/5/supercar/engine-temp/factor     → "0.555556"
+```
 
 ### Virtual sensors
 
@@ -85,7 +190,7 @@ property-id | "`raw-topic`" |
 settable | `true` |
 retained | `true` |
 type | `string` |
-unit | "" | This MUST remain unset, since it relies on the configurable remote value.
+unit |  |
 
 #### offset
 
