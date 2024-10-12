@@ -155,5 +155,5 @@ So overall profile support in this example is:
 - `homie-sensor-temperature`, versions `1.0` to `1.2`, and `2.0`
 - `power-switch`, versions `1.0` to `1.3`
 
-**Note**: for this to work it is essential that there are no naming collissions between the properties used in
-each of the profiles.
+**Note**: to be able to use multiple profiles it is essential that there are no naming
+collissions between the properties used in each of the profiles.

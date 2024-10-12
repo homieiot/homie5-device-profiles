@@ -3,6 +3,7 @@ theme: readthedocs
 #theme: simple-blog
 nav:
   - index.md
+  - cap-action.md
   - cap-inputs.md
   - cap-sensors-numeric.md
   - cap-sensors-binary.md

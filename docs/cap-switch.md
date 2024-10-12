@@ -51,7 +51,7 @@ homie/5/lawn-water/lawn-valve/value  → "false"
 
 #### Full example
 
-This example implements a sensor including all optional properties.
+This example implements a switch including all optional properties.
 
 Description:
 
@@ -70,6 +70,12 @@ Description:
         "retained": true,
         "type": "boolean",
         "format": "close,open"
+      },
+      "action": {
+        "settable": true,
+        "retained": false,
+        "type": "enum",
+        "format": "toggle"
       },
       "switch-time": {
         "settable": true,
@@ -146,6 +152,16 @@ type | "`boolean`" |
 
 
 ### Optional properties
+
+#### action
+
+The `action` property (optional) is an embedded [`homie-action/1/0` capability](cap-action.md#homie-action10). It supports the following actions:
+
+action | required | behaviour
+-|-|-
+`toggle` | no | Will toggle the state of the [`value` property](#value).
+
+
 
 #### switch-time
 
