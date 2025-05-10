@@ -3,11 +3,16 @@ theme: readthedocs
 #theme: simple-blog
 nav:
   - index.md
+  - dev-sensor.md
+  - dev-power-switch.md
+  - dev-light-dimmable.md
+  - dev-shutter.md
   - cap-action.md
   - cap-inputs.md
   - cap-sensors-numeric.md
   - cap-sensors-binary.md
   - cap-switch.md
+  - cap-level.md
   - contributing.md
   - LICENSE.md
   - old_stuff.md

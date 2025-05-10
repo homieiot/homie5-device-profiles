@@ -71,12 +71,6 @@ Description:
         "type": "boolean",
         "format": "close,open"
       },
-      "action": {
-        "settable": true,
-        "retained": false,
-        "type": "enum",
-        "format": "toggle"
-      },
       "switch-time": {
         "settable": true,
         "retained": true,
@@ -152,16 +146,6 @@ type | "`boolean`" |
 
 
 ### Optional properties
-
-#### action
-
-The `action` property (optional) is an embedded [`homie-action/1/0` capability](cap-action.md#homie-action10). It supports the following actions:
-
-action | required | behaviour
--|-|-
-`toggle` | no | Will toggle the state of the [`value` property](#value).
-
-
 
 #### switch-time
 
@@ -327,6 +311,14 @@ retained | `true` |
 type | `float` |
 format | "`0:`" | Value must be 0 or more. If `0` the auto-enable behaviour is disabled.
 unit | `"s"` | The time is provided in seconds
+
+### Actions
+
+A device implementing this profile can use the following actions (see also [homie-action/1/0](cap-action.md#homie-action10)):
+
+action | behaviour
+-|-
+`toggle` | Will toggle the state of the [`value` property](#value).
 
 
 ## homie-power-switch/1/0
