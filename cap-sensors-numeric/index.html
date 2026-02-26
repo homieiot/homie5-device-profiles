@@ -213,12 +213,14 @@
     &quot;engine-temp&quot;: {
       &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/0&quot;],
       &quot;name&quot;: &quot;Engine temperature&quot;,
-      &quot;value&quot;: {
-        &quot;settable&quot;: false,
-        &quot;retained&quot;: true,
-        &quot;unit&quot;: &quot;°C&quot;,
-        &quot;type&quot;: &quot;float&quot;,
-        &quot;format&quot;: &quot;0:40:0.5&quot;,
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: false,
+          &quot;retained&quot;: true,
+          &quot;unit&quot;: &quot;°C&quot;,
+          &quot;datatype&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:40:0.5&quot;
+        }
       }
     }
 
@@ -243,34 +245,36 @@ homie/5/supercar/engine-temp/value  → &quot;75.0&quot;
     &quot;engine-temp&quot;: {
       &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/0&quot;],
       &quot;name&quot;: &quot;Engine temperature&quot;,
-      &quot;value&quot;: {
-        &quot;settable&quot;: false,
-        &quot;retained&quot;: true,
-        &quot;unit&quot;: &quot;°C&quot;,
-        &quot;type&quot;: &quot;float&quot;,
-        &quot;format&quot;: &quot;0:120:0.5&quot;
-      },
-      &quot;raw&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;unit&quot;: &quot;°F&quot;,
-        &quot;type&quot;: &quot;float&quot;,
-        &quot;format&quot;: &quot;0:248&quot;
-      },
-      &quot;raw-topic&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;string&quot;
-      },
-      &quot;offset&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;float&quot;
-      },
-      &quot;factor&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;float&quot;
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: false,
+          &quot;retained&quot;: true,
+          &quot;unit&quot;: &quot;°C&quot;,
+          &quot;datatype&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:120:0.5&quot;
+        },
+        &quot;raw&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;unit&quot;: &quot;°F&quot;,
+          &quot;datatype&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:248&quot;
+        },
+        &quot;raw-topic&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;string&quot;
+        },
+        &quot;offset&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;float&quot;
+        },
+        &quot;factor&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;float&quot;
+        }
       }
 
     }
@@ -512,7 +516,7 @@ and received a value on its "<code>/set</code>" topic. If the value is set to an
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"°C"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"°C"</code>.</li>
 </ul>
 <p>Converting the value into other units, like <code>"°F"</code>, for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-volume10">homie-sensor-volume/1/0</h2>
@@ -520,7 +524,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"L"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"L"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-volt10">homie-sensor-volt/1/0</h2>
@@ -528,7 +532,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"V"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"V"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-current10">homie-sensor-current/1/0</h2>
@@ -536,7 +540,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"A"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"A"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-power10">homie-sensor-power/1/0</h2>
@@ -544,7 +548,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"W"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"W"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-energy10">homie-sensor-energy/1/0</h2>
@@ -552,7 +556,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"kWh"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"kWh"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-frequency10">homie-sensor-frequency/1/0</h2>
@@ -560,7 +564,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"Hz"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"Hz"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-battery10">homie-sensor-battery/1/0</h2>
@@ -568,7 +572,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"%"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"%"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-distance10">homie-sensor-distance/1/0</h2>
@@ -576,7 +580,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"m"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"m"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-speed10">homie-sensor-speed/1/0</h2>
@@ -584,7 +588,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"m/s"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"m/s"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-pressure10">homie-sensor-pressure/1/0</h2>
@@ -592,7 +596,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"Pa"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"Pa"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-light10">homie-sensor-light/1/0</h2>
@@ -600,7 +604,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"lx"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"lx"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-gas-co10">homie-sensor-gas-co/1/0</h2>
@@ -608,7 +612,7 @@ following modifications:</p>
 <p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
 following modifications:</p>
 <ul>
-<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
+<li>the <code>unit</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
 </ul>
 <p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
 <h2 id="homie-sensor-gas-co210">homie-sensor-gas-co2/1/0</h2>

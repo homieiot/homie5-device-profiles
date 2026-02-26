@@ -176,11 +176,13 @@
     &quot;living-motion&quot;: {
       &quot;$profile&quot;: [&quot;homie-input-presence/1/0&quot;],
       &quot;name&quot;: &quot;Motion detected&quot;,
-      &quot;value&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;boolean&quot;,
-        &quot;format&quot;: &quot;no-presence,presence&quot;
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;boolean&quot;,
+          &quot;format&quot;: &quot;no-presence,presence&quot;
+        }
       }
     }
 
@@ -205,32 +207,34 @@ homie/5/living-light/living-motion/value  → &quot;false&quot;
     &quot;livingroom&quot;: {
       &quot;$profile&quot;: [&quot;homie-input-presence/1/0&quot;],
       &quot;name&quot;: &quot;Motion detected&quot;,
-      &quot;value&quot;: {
-        &quot;settable&quot;: false,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;boolean&quot;,
-        &quot;format&quot;: &quot;no-presence,presence&quot;
-      },
-      &quot;raw&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;boolean&quot;
-      },
-      &quot;raw-topic&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;string&quot;
-      },
-      &quot;topic-falsy&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;string&quot;
-      },
-      &quot;invert&quot;: {
-        &quot;settable&quot;: true,
-        &quot;retained&quot;: true,
-        &quot;type&quot;: &quot;boolean&quot;,
-        &quot;format&quot;: &quot;no,yes&quot;
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: false,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;boolean&quot;,
+          &quot;format&quot;: &quot;no-presence,presence&quot;
+        },
+        &quot;raw&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;boolean&quot;
+        },
+        &quot;raw-topic&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;string&quot;
+        },
+        &quot;topic-falsy&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;string&quot;
+        },
+        &quot;invert&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;datatype&quot;: &quot;boolean&quot;,
+          &quot;format&quot;: &quot;no,yes&quot;
+        }
       }
 
     }
