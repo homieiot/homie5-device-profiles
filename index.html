@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Homie5 Profiles</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Introduction to Homie Profiles";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Introduction to Homie Profiles</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#abstract">Abstract</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#goals">Goals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#types-of-profiles">Types of profiles</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#capability-profiles">Capability profiles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#device-profiles">Device profiles</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#advertizing">Advertizing</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#capability-advertizing">Capability advertizing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#capability-searching">Capability searching</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#versioning">Versioning</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Introduction to Homie Profiles</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="introduction-to-homie-profiles">Introduction to Homie Profiles</h1>
+<h2 id="abstract">Abstract</h2>
+<p>This document aims to list a set of predefined device and capability profiles to be used in IoT and home automation scenarios.
+Where the <a href="https://homieiot.github.io/">Homie Convention</a> provides a standardized way for device discovery, descriptions,
+and value/event update publishing, the profiles defined here will add meaning to those devices, nodes and properties published.</p>
+<p>When using the Homie Convention to describe a light-bulb for example, there are many ways in which this can be done;</p>
+<ol>
+<li>a single property <code>power</code>: 0-100%</li>
+<li>a single property <code>brightness</code>: 0-255</li>
+<li>a boolean <code>power</code> property and a <code>brightness</code> property 0-100%</li>
+</ol>
+<p>Now how is a Homie controller to know all of the possible different implementations? Hence we define a profile with a
+unique name and publish it along with the device description.</p>
+<p>The official Homie Profiles are documented in this project.</p>
+<h2 id="goals">Goals</h2>
+<ul>
+<li>provide a unambiguous representation of the state a device is in</li>
+<li>provide a strict expectation for the user how a device behaves</li>
+<li>make it easy to discover compatible devices/capabilities</li>
+<li>allow flexibility in having required/optional/custom elements</li>
+<li>provide hints for a UI, without specifying the UI implementation</li>
+</ul>
+<h2 id="types-of-profiles">Types of profiles</h2>
+<p>Profiles are defined on 2 levels;</p>
+<ol>
+<li>Capability level: this maps to a Homie "node" within a device, and it defines the properties for the capability/node.</li>
+<li>Device level: this maps to the Homie device, and it defines the capabilities for the device</li>
+</ol>
+<p>This structure allows for reuse of Capability profiles across different Device profiles</p>
+<h3 id="capability-profiles">Capability profiles</h3>
+<p>Capability profiles are defined on a node level. Each node represents a certain capability a device posesses which provides state or functionality via its properties.</p>
+<p>A Capability profile specifies the following:</p>
+<ul>
+<li>required properties; eg. a Dimmer MUST have a "brightness" property</li>
+<li>optional properties; eg. a Dimmer MAY have a "minimum" and "maximum" property</li>
+<li>node/capability behaviour across properties to make behaviour unambiguous. For example:<ul>
+<li>if either "minimum" or "maximum" is provided, the other MUST also be provided</li>
+<li>If "minimum" and "maximum" are provided, then the actual value sent to the device will be the "brightness" value mapped to the range between "minimum" and "maximum".</li>
+</ul>
+</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Capabilities MAY have additional properties, unless specified otherwise.</li>
+<li>Each node represents an instantiation of a capability. There can be more than one of the same capability on a device (e.g. 2 button capability nodes for a wall switch with 2 buttons)</li>
+</ul>
+<h3 id="device-profiles">Device profiles</h3>
+<p>A device profile specifies the following:</p>
+<ul>
+<li>required capabilities; eg. a Light MUST have a "switch" capability</li>
+<li>optional capabilities; eg. a Light MAY have a "dimmer" capability</li>
+<li>device/node/property behaviour across capabilities to make behaviour unambiguous. For example:<ul>
+<li>If a device has a "color" capability, then it MUST also have a "dimmer" capability</li>
+<li>Changing the "dimmer" state MUST NOT change the "switch" state</li>
+</ul>
+</li>
+</ul>
+<p>Note: devices MAY have additional Capabilities and/or Nodes, unless specified otherwise.</p>
+<h2 id="advertizing">Advertizing</h2>
+<p>The way the profile is announced is 2 fold. It is advertized using a Homie MQTT topic, as well as in the JSON description document.
+The components of the profile consist of the profile name, as well as the supported version (major+minor).</p>
+<h3 id="capability-advertizing">Capability advertizing</h3>
+<p>The <code>node</code> level attribute where to publish the profile in use is: <code>$profile</code>.</p>
+<p>The topic will have the name and the major version number, where the value contains the minor version number;</p>
+<pre><code>homie/5/[device]/[node]/$profile/[profile]/[maj] → "[min]"
+</code></pre>
+<p>The device description JSON document, in the node-object;</p>
+<pre><code class="language-json">  {
+    ...,
+    &quot;$profile&quot;: [&quot;[profile]/[maj]/[min]&quot;],
+    ...
+  }
+</code></pre>
+<p><strong>Note</strong>: in the JSON document the <code>$profile</code> property holds an <code>array</code> value, not a single string. See <a href="#versioning">versioning</a> below.</p>
+<p>So for a <code>homie-sensor-temperature</code>, version <code>1.3</code>, documented as <code>homie-sensor-temperature/1/3</code> the capability would be advertized as:</p>
+<pre><code>homie/5/[device]/[node]/$profile/homie-sensor-temperature/1 → "3"
+</code></pre>
+<pre><code class="language-json">  {
+    ...,
+    &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/3&quot;],
+    ...
+  }
+</code></pre>
+<h3 id="capability-searching">Capability searching</h3>
+<p>For controllers looking to find a specific type of device they are compatible with, they can use the
+published MQTT topic to query for the specific capabilities. For example:</p>
+<table>
+<thead>
+<tr>
+<th>Topic subscription</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homie/5/*/*/$profile/homie-sensor-temperature/*</code></td>
+<td>Will return all <code>homie-sensor-temperature</code> capabilities</td>
+</tr>
+<tr>
+<td><code>homie/5/mydevice/*/$profile/homie-sensor-temperature/*</code></td>
+<td>Will return all <code>homie-sensor-temperature</code> capabilities of device <code>mydevice</code></td>
+</tr>
+<tr>
+<td><code>homie/5/*/*/$profile/homie-sensor-temperature/2</code></td>
+<td>Will return all <code>homie-sensor-temperature</code> capabilities compatible with version <code>2</code></td>
+</tr>
+</tbody>
+</table>
+<p>By parsing the returned topics and values, all relevant data can be extracted:</p>
+<ul>
+<li>device id</li>
+<li>node id</li>
+<li>supported capability major version</li>
+<li>supported capability minor version</li>
+</ul>
+<h2 id="versioning">Versioning</h2>
+<p>Versioning is based on SemVer and is only done using the major and minor version components. This is because the profiles are
+description documents describing features and functionality. Any patch update would only be a clarification, never a change. Hence
+it does not make sense to advertize or search for versions including a patch version.</p>
+<p>Since minor versions are backward compatible within a major version, there is no need to ever list multiple minor versions.
+A device should only advertize the latest minor version it is compatible with. Eg. if a device advertizes version <code>1.2</code>, it
+is implicit that it also supports versions <code>1.0</code> and <code>1.1</code> of the same profile.</p>
+<p>If a device or a node supports either multiple profiles, or supports multiple major versions of a profile, then they can all
+be advertized. Here's an example of a capability supporting 2 profiles, and one of them in 2 versions:</p>
+<pre><code>homie/5/[device]/[node]/$profile/homie-sensor-temperature/1 → "2"
+homie/5/[device]/[node]/$profile/homie-sensor-temperature/2 → "0"
+homie/5/[device]/[node]/$profile/power-switch/1 → "3"
+</code></pre>
+<pre><code class="language-json">  {
+    ...,
+    &quot;$profile&quot;: [
+      &quot;homie-sensor-temperature/1/2&quot;,
+      &quot;homie-sensor-temperature/2/0&quot;,
+      &quot;power-switch/1/3&quot;
+    ],
+    ...
+  }
+</code></pre>
+<p>So overall profile support in this example is:</p>
+<ul>
+<li><code>homie-sensor-temperature</code>, versions <code>1.0</code> to <code>1.2</code>, and <code>2.0</code></li>
+<li><code>power-switch</code>, versions <code>1.0</code> to <code>1.3</code></li>
+</ul>
+<p><strong>Note</strong>: to be able to use multiple profiles it is essential that there are no naming
+collissions between the properties used in each of the profiles.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="dev-sensor/" class="btn btn-neutral float-right" title="Device: Sensor">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="dev-sensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-02-26 11:38:31.182196+00:00
+-->

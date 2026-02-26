@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Capability: Sensor - Numeric - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Capability: Sensor - Numeric";
+        var mkdocs_page_input_path = "cap-sensors-numeric.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Capability: Sensor - Numeric</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#numeric-sensors-introduction">Numeric sensors introduction</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-example">Full example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#virtual-sensors">Virtual sensors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-numeric10">homie-sensor-numeric/1/0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#description">Description</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#required-properties">Required properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#value">value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-properties">Optional properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#raw">raw</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#raw-topic">raw-topic</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#offset">offset</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#factor">factor</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-temperature10">homie-sensor-temperature/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-volume10">homie-sensor-volume/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-volt10">homie-sensor-volt/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-current10">homie-sensor-current/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-power10">homie-sensor-power/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-energy10">homie-sensor-energy/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-frequency10">homie-sensor-frequency/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-battery10">homie-sensor-battery/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-distance10">homie-sensor-distance/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-speed10">homie-sensor-speed/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-pressure10">homie-sensor-pressure/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-light10">homie-sensor-light/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-gas-co10">homie-sensor-gas-co/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-gas-co210">homie-sensor-gas-co2/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-gas-ch410">homie-sensor-gas-ch4/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-gas-voc10">homie-sensor-gas-voc/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-humidity10">homie-sensor-humidity/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#unit-conversions">Unit conversions</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Capability: Sensor - Numeric</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="capability-sensor-numeric">Capability: Sensor - Numeric</h1>
+<p>This capability description describes a generic numeric sensor node, and derived unit-specific sensors.</p>
+<h2 id="numeric-sensors-introduction">Numeric sensors introduction</h2>
+<p>A sensor node measures a single sensor value. The value is published under the property <code>value</code>. The descriptions vary by the type of value measured. Depending on the type of sensor, some properties and/or requirements my vary.</p>
+<p>They are very strictly defined, allowing only for a single <code>unit</code> or <code>format</code> attribute. This allows MQTT based querying of specific sensor types, without having to parse the device description.</p>
+<h3 id="examples">Examples</h3>
+<p>A Homie device with 1 node as a temperature sensor.</p>
+<h4 id="minimal-example">Minimal example</h4>
+<p>This minimal example only implements the required properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Super Car&quot;,
+  &quot;version&quot;: 7,
+  &quot;nodes&quot;: {
+
+    &quot;engine-temp&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/0&quot;],
+      &quot;name&quot;: &quot;Engine temperature&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: false,
+        &quot;retained&quot;: true,
+        &quot;unit&quot;: &quot;°C&quot;,
+        &quot;type&quot;: &quot;float&quot;,
+        &quot;format&quot;: &quot;0:40:0.5&quot;,
+      }
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/supercar/$state             → &quot;ready&quot;
+homie/5/supercar/$description       → &quot;{... the above json doc ...}&quot;
+homie/5/supercar/engine-temp/$profile/homie-sensor-temperature/1 → &quot;0&quot;
+homie/5/supercar/engine-temp/value  → &quot;75.0&quot;
+</code></pre>
+<h4 id="full-example">Full example</h4>
+<p>This example implements a sensor including all optional properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Super Car&quot;,
+  &quot;version&quot;: 7,
+  &quot;nodes&quot;: {
+
+    &quot;engine-temp&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/0&quot;],
+      &quot;name&quot;: &quot;Engine temperature&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: false,
+        &quot;retained&quot;: true,
+        &quot;unit&quot;: &quot;°C&quot;,
+        &quot;type&quot;: &quot;float&quot;,
+        &quot;format&quot;: &quot;0:120:0.5&quot;
+      },
+      &quot;raw&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;unit&quot;: &quot;°F&quot;,
+        &quot;type&quot;: &quot;float&quot;,
+        &quot;format&quot;: &quot;0:248&quot;
+      },
+      &quot;raw-topic&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;offset&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;float&quot;
+      },
+      &quot;factor&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;float&quot;
+      }
+
+    }
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/supercar/$state                 → &quot;ready&quot;
+homie/5/supercar/$description           → &quot;{... the above json doc ...}&quot;
+homie/5/supercar/engine-temp/$profile/homie-sensor-temperature/1 → &quot;0&quot;
+homie/5/supercar/engine-temp/value      → &quot;75.0&quot;
+homie/5/supercar/engine-temp/raw        → &quot;167&quot;
+homie/5/supercar/engine-temp/raw-topic  → &quot;homeassistant/sensor/some/topic&quot;
+homie/5/supercar/engine-temp/offset     → &quot;-32&quot;
+homie/5/supercar/engine-temp/factor     → &quot;0.555556&quot;
+</code></pre>
+<h3 id="virtual-sensors">Virtual sensors</h3>
+<p>Sensors can be virtual sensors, in the sense that the value is not actually measured, but set by a Homie controller. The
+profile takes this into account by allowing the (raw) value to be settable in those cases.</p>
+<p>For example;</p>
+<ul>
+<li>a virtual temperature sensor that is set by a controller as the averaga value of all temperature sensors in a room.</li>
+<li>a virtual motion sensor called "ground-floor", that has state "presence" as long as any of the sensors on the ground floor is tripped.</li>
+</ul>
+<p>By implementing the optional <a href="#raw"><code>raw</code> property</a> the sensor values become settable, and hence the same profile can be used as a virtual sensor.</p>
+<h2 id="homie-sensor-numeric10">homie-sensor-numeric/1/0</h2>
+<p>This is the common version if no specific profile is available. The profile name is: <code>homie-sensor-numeric/1/0</code>.</p>
+<h3 id="description">Description</h3>
+<p>A numerical sensor is a sensor for any numerical type data, eg. speed, temperature, volume etc. The type is not further specified, because it can be set using the regular <code>unit</code> attribute on the value. In a similar way the limits and precision can be specified using the <code>format</code> property.</p>
+<p>The most basic implementation will only have a <code>value</code> property. There are more advanced options that support calibration, and virtual sensors of this type.</p>
+<p>Specifically typed sensors are available for the most common formats. Each with their own profile name and version. The Node layout is the same for all, they only differ by supported <code>unit</code> types</p>
+<h3 id="required-properties">Required properties</h3>
+<h4 id="value">value</h4>
+<p>The <code>value</code> property (required) is the property that holds the sensor value (after calibration).</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>value</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>false</code></td>
+<td>virtual sensors can set the <code>raw</code> property.</td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>the <code>unit</code> attribute on this property MUST be specified, see the Homie specification for most common supported units.</td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the <code>format</code> attribute SHOULD be specified for precision, minimum and maximum values.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td>To represent integers, us the <code>format</code> attribute</td>
+</tr>
+</tbody>
+</table>
+<p>If any of the calibration properties are present, then the value is calculated as:</p>
+<pre><code>value = (raw-value + offset) * factor
+</code></pre>
+<p>The <code>offset</code> defaults to <code>0</code> if not present, and the <code>factor</code> defaults to <code>1</code> if not present.</p>
+<h3 id="optional-properties">Optional properties</h3>
+<h4 id="raw">raw</h4>
+<p>The <code>raw</code> property (optional) is the property that holds the raw sensor value, before calibration.</p>
+<p><strong>Note:</strong>: This property becomes REQUIRED when any of the following properties are present; <a href="#raw-topic"><code>raw-topic</code></a>, <a href="#offset"><code>offset</code></a>, or <a href="#factor"><code>factor</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>raw</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code>/<code>false</code></td>
+<td>mostly non-settable, except for virtual sensors.</td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>float</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>Can be any unit, but most likely the same as the <code>value</code> property (or a corresponding type, eg. <code>°F</code> as the <code>raw</code> type, with <code>°C</code> as the <code>value</code> type)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="raw-topic">raw-topic</h4>
+<p>The "<code>raw-topic</code>" property (optional) is an MQTT topic where the raw-value should be fetched (by subscribing to it).
+This allows for creating Homie sensors from any MQTT topic in the system.</p>
+<p>The behaviour when receiving a value update from the subscription should be as if the "<code>raw</code>" property was settable,
+and received a value on its "<code>/set</code>" topic. If the value is set to an empty string, then the topic subscription should be cancelled.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>raw-topic</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="offset">offset</h4>
+<p>The <code>offset</code> property (optional) is used to calibrate the raw sensor value. See <code>value</code> for <a href="#value">calibration calculation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>offset</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>float</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="factor">factor</h4>
+<p>The <code>factor</code> property (optional) is used to calibrate the raw sensor value. See <code>value</code> for <a href="#value">calibration calculation</a>.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>factor</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>float</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="homie-sensor-temperature10">homie-sensor-temperature/1/0</h2>
+<p>The profile name is: <code>homie-sensor-temperature/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"°C"</code>.</li>
+</ul>
+<p>Converting the value into other units, like <code>"°F"</code>, for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-volume10">homie-sensor-volume/1/0</h2>
+<p>The profile name is: <code>homie-sensor-volume/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"L"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-volt10">homie-sensor-volt/1/0</h2>
+<p>The profile name is: <code>homie-sensor-volt/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"V"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-current10">homie-sensor-current/1/0</h2>
+<p>The profile name is: <code>homie-sensor-current/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"A"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-power10">homie-sensor-power/1/0</h2>
+<p>The profile name is: <code>homie-sensor-power/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"W"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-energy10">homie-sensor-energy/1/0</h2>
+<p>The profile name is: <code>homie-sensor-energy/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"kWh"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-frequency10">homie-sensor-frequency/1/0</h2>
+<p>The profile name is: <code>homie-sensor-frequency/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"Hz"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-battery10">homie-sensor-battery/1/0</h2>
+<p>The profile name is: <code>homie-sensor-battery/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"%"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-distance10">homie-sensor-distance/1/0</h2>
+<p>The profile name is: <code>homie-sensor-distance/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"m"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-speed10">homie-sensor-speed/1/0</h2>
+<p>The profile name is: <code>homie-sensor-speed/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"m/s"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-pressure10">homie-sensor-pressure/1/0</h2>
+<p>The profile name is: <code>homie-sensor-pressure/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"Pa"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-light10">homie-sensor-light/1/0</h2>
+<p>The profile name is: <code>homie-sensor-light/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"lx"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-gas-co10">homie-sensor-gas-co/1/0</h2>
+<p>Measures carbon monoxide, the profile name is: <code>homie-sensor-gas-co/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-gas-co210">homie-sensor-gas-co2/1/0</h2>
+<p>Measures carbon dioxide, the profile name is: <code>homie-sensor-gas-co2/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-gas-ch410">homie-sensor-gas-ch4/1/0</h2>
+<p>Measures methane, the profile name is: <code>homie-sensor-gas-ch4/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-gas-voc10">homie-sensor-gas-voc/1/0</h2>
+<p>Measures volatile organic compounds, the profile name is: <code>homie-sensor-gas-voc/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"ppm"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="homie-sensor-humidity10">homie-sensor-humidity/1/0</h2>
+<p>Measures relative air humidity, the profile name is: <code>homie-sensor-humidity/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-numeric10"><code>homie-sensor-numeric/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>units</code> attribute of the <code>value</code> property MUST be <code>"%"</code>.</li>
+</ul>
+<p>Converting the value into other units for display is considered a <a href="#unit-conversions">UI responsibility</a>.</p>
+<h2 id="unit-conversions">Unit conversions</h2>
+<p>The reported values will always be in the specified unit as defined by the profile. Formatting them
+for display to the user is considered a UI responsibility.</p>
+<p>Unit conversions for raw-values (coming in via the <code>raw</code> or <code>raw-topic</code> properties) can be done
+using the <code>offset</code> and <code>factor</code> properties.</p>
+<table>
+<thead>
+<tr>
+<th>Profile</th>
+<th>Unit</th>
+<th>Raw unit</th>
+<th>delta</th>
+<th>factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homie-sensor-temperature/1/0</code></td>
+<td><code>°C</code></td>
+<td><code>°F</code></td>
+<td>-32</td>
+<td>0.555556 (== 5/9)</td>
+</tr>
+<tr>
+<td><code>homie-sensor-volume/1/0</code></td>
+<td><code>L</code></td>
+<td><code>gal</code></td>
+<td>0</td>
+<td>3.78541</td>
+</tr>
+<tr>
+<td><code>homie-sensor-volume/1/0</code></td>
+<td><code>L</code></td>
+<td><code>m³</code></td>
+<td>0</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td><code>homie-sensor-volt/1/0</code></td>
+<td><code>V</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-current/1/0</code></td>
+<td><code>A</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-power/1/0</code></td>
+<td><code>W</code></td>
+<td><code>kW</code></td>
+<td>0</td>
+<td>0.001</td>
+</tr>
+<tr>
+<td><code>homie-sensor-energy/1/0</code></td>
+<td><code>kWh</code></td>
+<td><code>kJ</code></td>
+<td>0</td>
+<td>0.0002778</td>
+</tr>
+<tr>
+<td><code>homie-sensor-energy/1/0</code></td>
+<td><code>kWh</code></td>
+<td><code>kcal</code></td>
+<td>0</td>
+<td>0.0011622</td>
+</tr>
+<tr>
+<td><code>homie-sensor-frequency/1/0</code></td>
+<td><code>Hz</code></td>
+<td><code>rpm</code></td>
+<td>0</td>
+<td>0.01666667 (== 1/60)</td>
+</tr>
+<tr>
+<td><code>homie-sensor-battery/1/0</code></td>
+<td><code>%</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-distance/1/0</code></td>
+<td><code>m</code></td>
+<td><code>cm</code></td>
+<td>0</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td><code>homie-sensor-distance/1/0</code></td>
+<td><code>m</code></td>
+<td><code>km</code></td>
+<td>0</td>
+<td>1000</td>
+</tr>
+<tr>
+<td><code>homie-sensor-distance/1/0</code></td>
+<td><code>m</code></td>
+<td><code>ft</code></td>
+<td>0</td>
+<td>0.3048</td>
+</tr>
+<tr>
+<td><code>homie-sensor-distance/1/0</code></td>
+<td><code>m</code></td>
+<td><code>in</code></td>
+<td>0</td>
+<td>0.0254</td>
+</tr>
+<tr>
+<td><code>homie-sensor-distance/1/0</code></td>
+<td><code>m</code></td>
+<td><code>mi</code></td>
+<td>0</td>
+<td>1609.3</td>
+</tr>
+<tr>
+<td><code>homie-sensor-speed/1/0</code></td>
+<td><code>m/s</code></td>
+<td><code>kn</code></td>
+<td>0</td>
+<td>0.514444</td>
+</tr>
+<tr>
+<td><code>homie-sensor-speed/1/0</code></td>
+<td><code>m/s</code></td>
+<td><code>km/h</code></td>
+<td>0</td>
+<td>0.277778</td>
+</tr>
+<tr>
+<td><code>homie-sensor-pressure/1/0</code></td>
+<td><code>Pa</code></td>
+<td><code>psi</code></td>
+<td>0</td>
+<td>6894.76</td>
+</tr>
+<tr>
+<td><code>homie-sensor-pressure/1/0</code></td>
+<td><code>Pa</code></td>
+<td><code>bar</code></td>
+<td>0</td>
+<td>100000</td>
+</tr>
+<tr>
+<td><code>homie-sensor-pressure/1/0</code></td>
+<td><code>Pa</code></td>
+<td><code>psi</code></td>
+<td>0</td>
+<td>6894.76</td>
+</tr>
+<tr>
+<td><code>homie-sensor-pressure/1/0</code></td>
+<td><code>Pa</code></td>
+<td><code>atm</code></td>
+<td>0</td>
+<td>101.325</td>
+</tr>
+<tr>
+<td><code>homie-sensor-light/1/0</code></td>
+<td><code>lx</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-gas-co/1/0</code></td>
+<td><code>ppm</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-gas-co2/1/0</code></td>
+<td><code>ppm</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-gas-ch4/1/0</code></td>
+<td><code>ppm</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-gas-voc/1/0</code></td>
+<td><code>ppm</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>homie-sensor-humidity/1/0</code></td>
+<td><code>%</code></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cap-inputs/" class="btn btn-neutral float-left" title="Capability: Inputs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cap-sensors-binary/" class="btn btn-neutral float-right" title="Capability: Sensor - Binary">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cap-inputs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cap-sensors-binary/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

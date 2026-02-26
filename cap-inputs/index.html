@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Capability: Inputs - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Capability: Inputs";
+        var mkdocs_page_input_path = "cap-inputs.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Capability: Inputs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#input-introduction">Input introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#differences-from-sensors">Differences from sensors</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-example">Full example</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#input-capability-list">Input capability list</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#numeric-inputs">Numeric inputs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#binary-inputs">Binary inputs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Capability: Inputs</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="capability-inputs">Capability: Inputs</h1>
+<p>This capability description describes an input node, which is derived from the numeric and binary sensor capabilities.</p>
+<h2 id="input-introduction">Input introduction</h2>
+<p>Inputs are related to sensors. They are to be used in devices that take a specific value as an input to operate, yet do not have their own sensors. For example:</p>
+<ul>
+<li>a thermostat taking a temperature sensor as input</li>
+<li>a fan using a VOC sensor to ventilate based on air quality</li>
+</ul>
+<h2 id="differences-from-sensors">Differences from sensors</h2>
+<p>The sensors are <a href="#input-capability-list">listed below</a>, with their equivalent "input" capabilities. Their capabilities are identical except for:</p>
+<ul>
+<li>the profile name uses "input" instead of "sensor", so a generic sensor has profile name
+  "<code>homie-sensor-numeric/1/0</code>", and a generic input has profile name "<code>homie-input-numeric/1/0</code>"</li>
+<li>an input must always be able to accept a value, as such either:<ul>
+<li>if there is no <code>raw</code> property then the <code>value</code> property MUST be settable, or</li>
+<li>the <code>raw</code> property MUST be present and settable, or</li>
+<li>the <code>raw-topic</code> property MUST be present and settable</li>
+</ul>
+</li>
+</ul>
+<h3 id="examples">Examples</h3>
+<p>A Homie device with 1 node as a presence/motion input.</p>
+<h4 id="minimal-example">Minimal example</h4>
+<p>This minimal example only implements the required properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Auto light&quot;,
+  &quot;version&quot;: 3,
+  &quot;nodes&quot;: {
+
+    &quot;living-motion&quot;: {
+      &quot;$profile&quot;: [&quot;homie-input-presence/1/0&quot;],
+      &quot;name&quot;: &quot;Motion detected&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no-presence,presence&quot;
+      }
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/living-light/$state               → &quot;ready&quot;
+homie/5/living-light/$description         → &quot;{... the above json doc ...}&quot;
+homie/5/living-light/living-motion/$profile/homie-sensor-presence/1 → &quot;0&quot;
+homie/5/living-light/living-motion/value  → &quot;false&quot;
+</code></pre>
+<h4 id="full-example">Full example</h4>
+<p>This example implements a sensor including all optional properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Auto light&quot;,
+  &quot;version&quot;: 7,
+  &quot;nodes&quot;: {
+
+    &quot;livingroom&quot;: {
+      &quot;$profile&quot;: [&quot;homie-input-presence/1/0&quot;],
+      &quot;name&quot;: &quot;Motion detected&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: false,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no-presence,presence&quot;
+      },
+      &quot;raw&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;
+      },
+      &quot;raw-topic&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;topic-falsy&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;invert&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no,yes&quot;
+      }
+
+    }
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/living-light/$state                     → &quot;ready&quot;
+homie/5/living-light/$description               → &quot;{... the above json doc ...}&quot;
+homie/5/living-light/living-motion/$profile/homie-sensor-presence/1 → &quot;0&quot;
+homie/5/living-light/living-motion/value        → &quot;false&quot;
+homie/5/living-light/living-motion/raw          → &quot;true&quot;
+homie/5/living-light/living-motion/raw-topic    → &quot;homeassistant/sensor/some/topic&quot;
+homie/5/living-light/living-motion/topic-falsy  → &quot;false,False,off,Off,0&quot;
+homie/5/living-light/living-motion/invert       → &quot;true&quot;
+</code></pre>
+<h2 id="input-capability-list">Input capability list</h2>
+<p>For the mandatory changes from the "sensor" capabilities see <a href="#differences-from-sensors">differences from sensors</a>.</p>
+<h3 id="numeric-inputs">Numeric inputs</h3>
+<table>
+<thead>
+<tr>
+<th>Input capability</th>
+<th>based on sensor type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homie-input-numeric</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-numeric10"><code>homie-sensor-numeric</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-temperature</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-temperature10"><code>homie-sensor-temperature</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-volume</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-volume10"><code>homie-sensor-volume</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-volt</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-volt10"><code>homie-sensor-volt</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-current</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-current10"><code>homie-sensor-current</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-power</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-power10"><code>homie-sensor-power</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-energy</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-energy10"><code>homie-sensor-energy</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-frequency</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-frequency10"><code>homie-sensor-frequency</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-battery</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-battery10"><code>homie-sensor-battery</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-distance</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-distance10"><code>homie-sensor-distance</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-speed</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-speed10"><code>homie-sensor-speed</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-pressure</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-pressure10"><code>homie-sensor-pressure</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-light</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-light10"><code>homie-sensor-light</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-gas-co</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-co10"><code>homie-sensor-gas-co</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-gas-co2</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-co210"><code>homie-sensor-gas-co2</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-gas-ch4</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-ch410"><code>homie-sensor-gas-ch4</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-gas-voc</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-voc10"><code>homie-sensor-gas-voc</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-humidity</code></td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-humidity10"><code>homie-sensor-humidity</code></a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="binary-inputs">Binary inputs</h3>
+<table>
+<thead>
+<tr>
+<th>Input capability</th>
+<th>based on sensor type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>homie-input-binary</code></td>
+<td><a href="../cap-sensors-binary/#homie-sensor-binary10"><code>homie-sensor-binary</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-power-switch</code></td>
+<td><a href="../cap-sensors-binary/#homie-sensor-power-switch10"><code>homie-sensor-power-switch</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-window</code></td>
+<td><a href="../cap-sensors-binary/#homie-sensor-window10"><code>homie-sensor-window</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-valve</code></td>
+<td><a href="../cap-sensors-binary/#homie-sensor-valve10"><code>homie-sensor-valve</code></a></td>
+</tr>
+<tr>
+<td><code>homie-input-presence</code></td>
+<td><a href="../cap-sensors-binary/#homie-sensor-presence10"><code>homie-sensor-presence</code></a></td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cap-action/" class="btn btn-neutral float-left" title="Capability: Action"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cap-sensors-numeric/" class="btn btn-neutral float-right" title="Capability: Sensor - Numeric">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cap-action/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cap-sensors-numeric/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Device: Dimmable Light - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Device: Dimmable Light";
+        var mkdocs_page_input_path = "dev-light-dimmable.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Device: Dimmable Light</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dimmable-light-introduction">Dimmable Light introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#profile-name">Profile name</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#device-logic">Device logic</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nodes">Nodes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#power-required">power (required)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#brightness-required">brightness (required)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#action-optional">action (optional)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#temperature-optional">temperature (optional)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#color-optional">color (optional)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#property-value">Property: value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#startup-optional">Startup (optional)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#property-value_1">Property: value</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#property-delay">Property: delay</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Device: Dimmable Light</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="device-dimmable-light">Device: Dimmable Light</h1>
+<p>This device description describes a dimmable light.</p>
+<h2 id="dimmable-light-introduction">Dimmable Light introduction</h2>
+<p>A dimmable-light resembles a light with dimming capabilities and an optional color and temperature (for warm/cold white light).</p>
+<h2 id="profile-name">Profile name</h2>
+<p>The profile for this device is <code>homie-light-dimmable/1/0</code>. It is located in the device description JSON document in the device level <code>$profile</code> attribute, and the <code>$profile</code> topic.</p>
+<h2 id="examples">Examples</h2>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;main-light&quot;,
+  &quot;version&quot;: 3,
+  &quot;$profile&quot;: [&quot;homie-light-dimmable/1/0&quot;],
+  &quot;nodes&quot;: {
+
+    &quot;power&quot;: {
+      &quot;$profile&quot;: [&quot;homie-power-switch/1/0&quot;],
+      ...
+    },
+    &quot;brightness&quot;: {
+      &quot;$profile&quot;: [&quot;homie-level/1/0&quot;],
+      ...
+    },
+    &quot;color&quot;: {
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;color&quot;,
+          &quot;format&quot;: &quot;rgb&quot;
+        }
+      }
+    },
+    &quot;temperature&quot;: {
+      &quot;$profile&quot;: [&quot;homie-level/1/0&quot;],
+      ...
+    },
+    &quot;action&quot;: {
+      &quot;$profile&quot;: [&quot;homie-action/1/0&quot;],
+      ...
+    },
+    &quot;startup&quot;: {
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;1:100&quot;,
+          &quot;unit&quot;: &quot;%&quot;
+        },
+        &quot;delay&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:&quot;,
+          &quot;unit&quot;: &quot;s&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/main-light/$profile/homie-light-dimmable/1 → &quot;0&quot;
+</code></pre>
+<h2 id="device-logic">Device logic</h2>
+<p>Power and Brightness are independent. The brightness value cannot be 0, as the light would be off. The brightness value must be between 1 and 100. To turn the device off, the power node must be set to <code>false</code>.</p>
+<p>Some properties have related or overlapping values. The temperature value overlaps with the color value. And if the color is encoded as <code>hsv</code> or <code>rgb</code>, the brightness value is also included in the color value.</p>
+<h2 id="nodes">Nodes</h2>
+<p>This device-profile implements the following nodes and capability-profiles:</p>
+<table>
+<thead>
+<tr>
+<th>Node-ID</th>
+<th>Capability-Profile</th>
+<th>required</th>
+<th>additional<br/>requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>power</td>
+<td><a href="../cap-switch/#homie-power-switch10">homie-power-switch/1/0</a></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>brightness</td>
+<td><a href="../cap-level/#homie-level10">homie-level/1/0</a></td>
+<td>yes</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>action</td>
+<td><a href="../cap-action/#homie-action10">homie-action/1/0</a></td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td><a href="../cap-level/#homie-level10">homie-level/1/0</a></td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>color</td>
+<td>n.a.</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>startup</td>
+<td>n.a.</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p>Additional nodes MAY be added to the device.</p>
+<h3 id="power-required">power (required)</h3>
+<p>The brightness node MUST conform to the following additional requirements:</p>
+<ul>
+<li>A change in state of the <code>power</code> node MUST NOT affect the <code>brightness</code> value. They are independent.</li>
+</ul>
+<h3 id="brightness-required">brightness (required)</h3>
+<p>The brightness node MUST conform to the following additional requirements:</p>
+<ul>
+<li>The <code>unit</code> attribute of the <code>value</code> property MUST be set to <code>%</code> (percent).</li>
+<li>The <code>format</code> attribute of the <code>value</code> property MUST be set to a minimum of <code>1</code> and a maximum of <code>100</code>.</li>
+<li><code>1</code> represents the lowest possible brightness at which the light is still visibly on.</li>
+<li>A change in <code>brightness</code> value MUST NOT affect the <code>power</code> state. They are independent.</li>
+<li>Changing the brightness value MUST change the <code>value</code> property of the <code>color</code> node if it is represented as <code>hsv</code> or <code>rgb</code> (since they include brightness information).</li>
+</ul>
+<h3 id="action-optional">action (optional)</h3>
+<p>The action node (optional) implements the following actions:</p>
+<table>
+<thead>
+<tr>
+<th>action</th>
+<th>optional</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>toggle</td>
+<td>yes</td>
+<td>maps to the <code>power</code> node, implementing the <code>toggle</code> action of the <code>homie-power-switch</code> capability.</td>
+</tr>
+<tr>
+<td>step-up</td>
+<td>yes</td>
+<td>maps to the <code>brightness</code> node, implementing the <code>step-up</code> action of the <code>homie-level</code> capability.</td>
+</tr>
+<tr>
+<td>step-down</td>
+<td>yes</td>
+<td>maps to the <code>brightness</code> node, implementing the <code>step-down</code> action of the <code>homie-level</code> capability.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="temperature-optional">temperature (optional)</h3>
+<p>The temperature node (optional) MUST conform to the following additional requirements:</p>
+<ul>
+<li>The <code>unit</code> attribute of the <code>value</code> property MUST be set to <code>K</code> (Kelvin).</li>
+<li>Changing the temperature value MUST change the <code>value</code> property of the <code>color</code> node. The <code>value</code> property of the <code>color</code> node MUST be set to the color matching the temperature and the current brightness.</li>
+</ul>
+<h3 id="color-optional">color (optional)</h3>
+<p>The color node (optional) represents the color of the light.</p>
+<h4 id="property-value">Property: value</h4>
+<p>The <code>value</code> property (required) is the property of type <code>color</code> that holds the color value and allows to update it.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>value</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>color</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the standard <code>format</code> for colors. It MUST include <code>rgb</code>, other color formats MAY be specified in addition.</td>
+</tr>
+</tbody>
+</table>
+<p>Upon updating the value, the <code>brightness</code> property MUST be updated accordingly if the value is set as an <code>rgb</code> or <code>hsv</code> value (since they include brightness information).</p>
+<h3 id="startup-optional">Startup (optional)</h3>
+<p>Dimmable lights might need a minimum brightness level to start. Once started they can be dimmed to a lower brightness, but an initial higher level is required to turn the light on.</p>
+<p>The startup node (optional) has 2 properties (required)</p>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>required</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>yes</td>
+<td>the minimum brightness level to set when turning the device on</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>yes</td>
+<td>the delay, after which the brightness level can be switched to the brightness level specified by the <a href="#brightness-required">brightness</a> node.</td>
+</tr>
+</tbody>
+</table>
+<p>Logic:</p>
+<ul>
+<li><strong>WHEN</strong> the device is switched on using the <a href="#power-required">power</a> node</li>
+<li><strong>AND</strong> the brightness level as set in the <a href="#brightness-required">brightness</a> node is <strong>LESS THAN</strong> the startup <code>value</code> property</li>
+<li><strong>THEN</strong> the brightness level should be set to the startup <code>value</code> property (without changing the <code>$target</code> value in the <a href="#brightness-required">brightness</a> node)</li>
+<li><strong>AFTER</strong> <code>delay</code> number of seconds the device should set the brightness to the <code>$target</code> value as set in the <a href="#brightness-required">brightness</a> node</li>
+</ul>
+<h4 id="property-value_1">Property: value</h4>
+<p>The <code>value</code> property (required) is the property of type <code>float</code> that holds the start-level brightness value and allows to update it</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>value</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td><code>1:100</code></td>
+<td>the <code>format</code> attribute MUST set minimum (1) and maximum (100), precision MAY be set.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td><code>%</code></td>
+<td>the unit attribute MUST be <code>%</code> to match the brightness property</td>
+</tr>
+</tbody>
+</table>
+<h4 id="property-delay">Property: delay</h4>
+<p>The <code>delay</code> property (required) is the property of type <code>float</code> that holds the time required to start the light.
+Setting the delay to 0 will disable the startup behaviour.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>delay</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td><code>0:</code></td>
+<td>the <code>format</code> attribute MUST set minimum (0) and MAY set maximum and precision.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td><code>s</code></td>
+<td>the delay is specified in seconds</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dev-power-switch/" class="btn btn-neutral float-left" title="Device: Power Switch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dev-shutter/" class="btn btn-neutral float-right" title="Device: Shutter">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../dev-power-switch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dev-shutter/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

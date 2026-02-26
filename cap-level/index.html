@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Capability: Level-actor - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Capability: Level-actor";
+        var mkdocs_page_input_path = "cap-level.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Capability: Level-actor</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#level-introduction">Level introduction</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-example">Full example</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-level10">homie-level/1/0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-properties">Required properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#value">value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-properties">Optional properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#step-size">step-size</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#transition-time">transition-time</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#minimum">minimum</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#maximum">maximum</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#actions">Actions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Capability: Level-actor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="capability-level-actor">Capability: Level-actor</h1>
+<p>This capability description describes a generic level node, and derived specific levels.</p>
+<h2 id="level-introduction">Level introduction</h2>
+<p>A level actor is an actor that can change levels indicated by a numeric value. A typical example is the brightness-level of a dimmable light.</p>
+<h3 id="examples">Examples</h3>
+<p>A Homie device with 1 node as a brightness control.</p>
+<h4 id="minimal-example">Minimal example</h4>
+<p>This minimal example only implements the required properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Kitchen light&quot;,
+  &quot;version&quot;: 3,
+  &quot;nodes&quot;: {
+
+    &quot;table-top-kitchen&quot;: {
+      &quot;$profile&quot;: [&quot;homie-level/1/0&quot;],
+      &quot;name&quot;: &quot;brightness&quot;,
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:100&quot;
+        }
+      }
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/kitchen-light/$state                    → &quot;ready&quot;
+homie/5/kitchen-light/$description              → &quot;{... the above json doc ...}&quot;
+homie/5/kitchen-light/table-top-kitchen/$profile/homie-level/1 → &quot;0&quot;
+homie/5/kitchen-light/table-top-kitchen/value   → &quot;70&quot;
+</code></pre>
+<h4 id="full-example">Full example</h4>
+<p>This example implements a level actor including all optional properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Kitchen light&quot;,
+  &quot;version&quot;: 3,
+  &quot;nodes&quot;: {
+
+    &quot;table-top-kitchen&quot;: {
+      &quot;$profile&quot;: [&quot;homie-level/1/0&quot;],
+      &quot;name&quot;: &quot;brightness&quot;,
+      &quot;properties&quot;: {
+        &quot;value&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:100:1&quot;,
+          &quot;unit&quot;: &quot;%&quot;
+        },
+        &quot;step-size&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;1:100:1&quot;
+        },
+        &quot;transition-time&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:&quot;,
+          &quot;unit&quot;: &quot;s&quot;
+        },
+        &quot;minimum&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:100:1&quot;,
+          &quot;unit&quot;: &quot;%&quot;
+        },
+        &quot;maximum&quot;: {
+          &quot;settable&quot;: true,
+          &quot;retained&quot;: true,
+          &quot;type&quot;: &quot;float&quot;,
+          &quot;format&quot;: &quot;0:100:1&quot;,
+          &quot;unit&quot;: &quot;%&quot;
+        }
+      }
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/kitchen-light/$state                            → &quot;ready&quot;
+homie/5/kitchen-light/$description                      → &quot;{... the above json doc ...}&quot;
+homie/5/kitchen-light/table-top-kitchen/$profile/homie-level/1 → &quot;0&quot;
+homie/5/kitchen-light/table-top-kitchen/value           → &quot;70&quot;
+homie/5/kitchen-light/table-top-kitchen/step-size       → &quot;10&quot;
+homie/5/kitchen-light/table-top-kitchen/transition-time → &quot;30&quot;
+homie/5/kitchen-light/table-top-kitchen/minimum         → &quot;0&quot;
+homie/5/kitchen-light/table-top-kitchen/maximum         → &quot;100&quot;
+</code></pre>
+<h2 id="homie-level10">homie-level/1/0</h2>
+<p>The profile name is: <code>homie-level/1/0</code>.</p>
+<h3 id="required-properties">Required properties</h3>
+<h4 id="value">value</h4>
+<p>The <code>value</code> property (required) is the property of type <code>float</code> that holds the level value and allows to update it</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>value</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the <code>format</code> attribute MUST set minimum and maximum, precision MAY be set.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>the unit attribute MAY be specified. It is recommended to use a unit, but not required.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-properties">Optional properties</h3>
+<h4 id="step-size">step-size</h4>
+<p>The <code>step-size</code> property (optional) represents the step size for the level-actor to change upon the <a href="#actions"><code>step-up</code> and <code>step-down</code> actions</a>.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>step-size</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the <code>format</code> attribute MUST be specified. See details below.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>the unit attribute MUST be the same as the <code>value</code> property.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>format</code> attribute:</p>
+<ul>
+<li>minimum value MUST be greater-than 0.</li>
+<li>if the <a href="#value"><code>value</code> property</a> has a precision set in its format, then the <code>step-size</code> minimum MUST be greater-than or equal-to the precision of the <a href="#value"><code>value</code> property</a>.</li>
+</ul>
+<h4 id="transition-time">transition-time</h4>
+<p>The <code>transition-time</code> property (optional) represents the time for the level-actor to change from minimum to maximum value. The time specified is for traversing the full range. Smaller changes should use relative times.</p>
+<p>This property is used if the change in level is controllable by the device. An example is a brightness setting for a dimmable light, where it can be set to dim slowly over 30 seconds. An example where it doesn't work would be a roller-shutter; these typically do not control the speed of opening/closing.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>transition-time</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td>"<code>0:</code>"</td>
+<td>Value must be 0 or more</td>
+</tr>
+<tr>
+<td>unit</td>
+<td><code>"s"</code></td>
+<td>The time is provided in seconds</td>
+</tr>
+</tbody>
+</table>
+<h4 id="minimum">minimum</h4>
+<p>The minimum value to be set.</p>
+<p><strong>Note</strong>: if minimum is provided, then the <a href="#maximum"><code>maximum</code> property</a> becomes required, and MUST be provide as well.</p>
+<p>The value specified by the <a href="#value"><code>value</code> property</a> should be mapped to the range from <code>minimum</code> to <a href="#maximum"><code>maximum</code></a>. The result should be used in the internal state. Maximum can be less than minimum, mathematically it stays the same, just the result becomes "inverted".</p>
+<p>Example:</p>
+<ul>
+<li>value ranges from 1-100%,</li>
+<li>minimum is set to 15,</li>
+<li>maximum is set to 70,</li>
+<li>value is set to 90%</li>
+</ul>
+<p>Value 90 within range 1-100, is mapped to the range 15-70. The result is 64.44%.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>minimum</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the minimum and maximum MUST be specified in the <code>format</code> attribute. It MUST be the same as for the <code>maximum</code> property.</td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>Optional. It does not have to be the same unit as the <code>value</code> property, but MUST be the same as the <code>maximum</code> property.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="maximum">maximum</h4>
+<p>The maximum value to be set.</p>
+<p><strong>Note</strong>: if maximum is provided, then the <a href="#minimum"><code>minimum</code> property</a> becomes required, and MUST be provide as well.</p>
+<p>The value specified by the <a href="#value"><code>value</code> property</a> should be mapped to the range from <a href="#minimum"><code>minimum</code></a> to <code>maximum</code>. The result should be used in the internal state. Maximum can be less than minimum, mathematically it stays the same, but the result becomes "inverted".</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>maximum</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>float</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the minimum and maximum MUST be specified in the <code>format</code> attribute. It MUST be the same as for the <code>minimum</code> property.</td>
+</tr>
+<tr>
+<td>unit</td>
+<td></td>
+<td>Optional. It does not have to be the same unit as the <code>value</code> property, but MUST be the same as the <code>minimum</code> property.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="actions">Actions</h3>
+<p>A device implementing this profile can use the following actions (see also <a href="../cap-action/#homie-action10">homie-action/1/0</a>):</p>
+<table>
+<thead>
+<tr>
+<th>action</th>
+<th>behaviour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>step-up</code></td>
+<td>Will step up the state of the <a href="#value"><code>value</code> property</a> by <a href="#step-size"><code>step-size</code></a>, but never beyond its maximum.</td>
+</tr>
+<tr>
+<td><code>step-down</code></td>
+<td>Will step down the state of the <a href="#value"><code>value</code> property</a> by <a href="#step-size"><code>step-size</code></a>, but never below its minimum.</td>
+</tr>
+</tbody>
+</table>
+<p>The behaviour of the step-up/down actions should be as if the new value is posted on the <code>set</code> attribute of the <a href="#value"><code>value</code> property</a>.</p>
+<p>If the optional <code>step-size</code> property is not specified, then the <code>step-up</code> and <code>step-down</code> actions may use an implementation defined step-size.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cap-switch/" class="btn btn-neutral float-left" title="Capability: Switch"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Contributing">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cap-switch/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>older stuff to review, move, or delete - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "older stuff to review, move, or delete";
+        var mkdocs_page_input_path = "old_stuff.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">older stuff to review, move, or delete</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#device-descriptions">Device descriptions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#light">Light</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#device-capabilities">Device capabilities</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#inter-capability-behaviour">Inter-capability behaviour</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#capability-descriptions">Capability descriptions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#switch">Switch</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comments">Comments:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dimmer">Dimmer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#properties_1">Properties</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#comments_1">Comments:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#colorlight">Colorlight</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#properties_2">Properties</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">older stuff to review, move, or delete</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="older-stuff-to-review-move-or-delete">older stuff to review, move, or delete</h1>
+<h2 id="device-descriptions">Device descriptions</h2>
+<h3 id="light">Light</h3>
+<p><code>type</code>: "homie-device-profile/v1/type=light"</p>
+<p>This device represents binary and dimmable lights with no color.</p>
+<h4 id="device-capabilities">Device capabilities</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>type</th>
+<th>optional</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>switch</td>
+<td><code>homie-capability-profile/v1/type=switch</code></td>
+<td>no</td>
+<td>n.a.</td>
+</tr>
+<tr>
+<td>dimmer</td>
+<td><code>homie-capability-profile/v1/type=dimmer</code></td>
+<td>yes</td>
+<td>n.a</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>id</code> is the required name on the Homie "Node" level</p>
+<h4 id="inter-capability-behaviour">Inter-capability behaviour</h4>
+<p>The switch has no effect on the dimmer state, nor the dimmer state on the switch. Examples:</p>
+<table>
+<thead>
+<tr>
+<th>state</th>
+<th>action</th>
+<th>result</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>switch.state=true, dimmer.brightness=50</code></td>
+<td>set <code>switch.state=false</code></td>
+<td><code>switch.state=false, dimmer.brightness=50</code></td>
+<td>brightness is unchanged</td>
+</tr>
+<tr>
+<td><code>switch.state=false, dimmer.brightness=50</code></td>
+<td>set <code>dimmer.brightness=60</code></td>
+<td><code>switch.state=false, dimmer.brightness=60</code></td>
+<td>light remains off</td>
+</tr>
+</tbody>
+</table>
+<h2 id="capability-descriptions">Capability descriptions</h2>
+<h3 id="switch">Switch</h3>
+<p><code>type</code>: "homie-capability-profile/v1/type=switch"</p>
+<p><em>Example usages</em>: Represent a switchable actor, e.g. wall socket plug, light bulb.</p>
+<h4 id="properties">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>type</th>
+<th>settable (default)</th>
+<th>retained</th>
+<th>unit</th>
+<th>format</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>state</td>
+<td><code>boolean</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>-</td>
+<td>off,on</td>
+<td>format specifies labels for false/true</td>
+</tr>
+<tr>
+<td>action</td>
+<td><code>enum</code></td>
+<td>yes</td>
+<td>no</td>
+<td>-</td>
+<td><code>toggle</code></td>
+<td>toggles state between true and false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="comments">Comments:</h4>
+<p>Since a boolean does not carry any context, the format property specifies the labels for the boolean values.
+The format is the same as an <code>enum</code> where <code>false</code> is the first and <code>true</code> is the second entry.
+Reasoning is that if the <code>enum</code> is an <code>array</code>, and <code>false</code> is often represented as 0 and <code>true</code> often as 1. Then those 0/1 values are the indices of the format <code>array</code> to ease implementations.</p>
+<p>This format entry requires a change to the Homie protocol</p>
+<p>The value could also be specified as an <code>enum</code> all together, but having a <code>boolean</code> provides a hint to a UI as to how to render the property (see the "goals" section").</p>
+<h3 id="dimmer">Dimmer</h3>
+<p><code>type</code>: "homie-capability-profile/v1/type=dimmer"</p>
+<p><em>Example usages</em>: Dimmable light.</p>
+<h4 id="properties_1">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>type</th>
+<th>settable (default)</th>
+<th>retained</th>
+<th>unit</th>
+<th>format</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>brightness</td>
+<td><code>integer</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>%</td>
+<td><code>1:100</code></td>
+<td>0 is not allowed since it would be ambiguous</td>
+</tr>
+<tr>
+<td>action</td>
+<td><code>enum</code></td>
+<td>yes</td>
+<td>no</td>
+<td>-</td>
+<td><code>brighter,darker</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="comments_1">Comments:</h4>
+<p><code>brightness</code> is restricted from 1 to 100%, 0 would be ambiguous. It is important to note that this is the STATE representation, not the UI representation. A UI is still free in how it renders the state; a single slider 0-100, a switch and 1-100, or a switch and 0-100.</p>
+<p>The brighter and darker actions are problematic in so far as that we would need to define the delta adjustment value. But depending on the devices practical values could be difficult to align.
+An argument could be made to completly remove this feature all together but it has proved to be rather practical in home automation scenarios.
+Another way could be a 'delta' property that simply receives +- values for adjustments.</p>
+<h3 id="colorlight">Colorlight</h3>
+<p><code>type</code>: "homie-capability-profile/v1/type=colorlight"</p>
+<p><em>Example usages</em>: Color control for a lightbulb or LED strip.</p>
+<h4 id="properties_2">Properties</h4>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>type</th>
+<th>settable (default)</th>
+<th>retained</th>
+<th>unit</th>
+<th>format</th>
+<th>comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>color</td>
+<td><code>color</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>-</td>
+<td><code>rgb/hsv</code></td>
+<td></td>
+</tr>
+<tr>
+<td>color-temperature</td>
+<td><code>integer</code></td>
+<td>yes</td>
+<td>yes</td>
+<td>Mired</td>
+<td><code>min:max</code></td>
+<td>fomat specifies min max values supported by the device</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../LICENSE/" class="btn btn-neutral float-left" title="License"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../LICENSE/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

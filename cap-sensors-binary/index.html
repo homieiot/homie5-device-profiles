@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Capability: Sensor - Binary - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Capability: Sensor - Binary";
+        var mkdocs_page_input_path = "cap-sensors-binary.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-sensor/">Device: Sensor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Capability: Sensor - Binary</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#binary-sensors-introduction">Binary sensors introduction</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#minimal-example">Minimal example</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#full-example">Full example</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#virtual-sensors">Virtual sensors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-binary10">homie-sensor-binary/1/0</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#required-properties">Required properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#value">value</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-properties">Optional properties</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#raw">raw</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#raw-topic">raw-topic</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#topic-falsy">topic-falsy</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#invert">invert</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-power-switch10">homie-sensor-power-switch/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-window10">homie-sensor-window/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-valve10">homie-sensor-valve/1/0</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#homie-sensor-presence10">homie-sensor-presence/1/0</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Capability: Sensor - Binary</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="capability-sensor-binary">Capability: Sensor - Binary</h1>
+<p>This capability description describes a generic binary sensor node, and derived unit specific sensors.</p>
+<h2 id="binary-sensors-introduction">Binary sensors introduction</h2>
+<p>A binary sensor is a sensor for any boolean type data, eg. on/off, open/close, presence/no-presence etc.</p>
+<p>Specifically typed sensors are available for the most common ones. Each with their own profile name and version. The Node layout is the same for all, they only differ by supported <code>format</code> labels.</p>
+<h3 id="examples">Examples</h3>
+<p>A Homie device with 1 node as a presence/motion sensor.</p>
+<h4 id="minimal-example">Minimal example</h4>
+<p>This minimal example only implements the required properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Motion sensor&quot;,
+  &quot;version&quot;: 3,
+  &quot;nodes&quot;: {
+
+    &quot;livingroom&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-presence/1/0&quot;],
+      &quot;name&quot;: &quot;Livingroom Motion&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: false,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no-presence,presence&quot;
+      }
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/living-motion/$state            → &quot;ready&quot;
+homie/5/living-motion/$description      → &quot;{... the above json doc ...}&quot;
+homie/5/living-motion/livingroom/$profile/homie-sensor-presence/1 → &quot;0&quot;
+homie/5/living-motion/livingroom/value  → &quot;false&quot;
+</code></pre>
+<h4 id="full-example">Full example</h4>
+<p>This example implements a sensor including all optional properties.</p>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Motion sensor livingroom&quot;,
+  &quot;version&quot;: 7,
+  &quot;nodes&quot;: {
+
+    &quot;livingroom&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-presence/1/0&quot;],
+      &quot;name&quot;: &quot;Livingroom Motion&quot;,
+      &quot;value&quot;: {
+        &quot;settable&quot;: false,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no-presence,presence&quot;
+      },
+      &quot;raw&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;
+      },
+      &quot;raw-topic&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;topic-falsy&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;string&quot;
+      },
+      &quot;invert&quot;: {
+        &quot;settable&quot;: true,
+        &quot;retained&quot;: true,
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;format&quot;: &quot;no,yes&quot;
+      }
+
+    }
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/living-motion/$state                  → &quot;ready&quot;
+homie/5/living-motion/$description            → &quot;{... the above json doc ...}&quot;
+homie/5/living-motion/livingroom/$profile/homie-sensor-presence/1 → &quot;0&quot;
+homie/5/living-motion/livingroom/value        → &quot;false&quot;
+homie/5/living-motion/livingroom/raw          → &quot;true&quot;
+homie/5/living-motion/livingroom/raw-topic    → &quot;homeassistant/sensor/some/topic&quot;
+homie/5/living-motion/livingroom/topic-falsy  → &quot;false,False,off,Off,0&quot;
+homie/5/living-motion/livingroom/invert       → &quot;true&quot;
+</code></pre>
+<h3 id="virtual-sensors">Virtual sensors</h3>
+<p>Sensors can be virtual sensors, in the sense that the value is not actually measured, but set by a Homie controller.
+For example;</p>
+<ul>
+<li>a virtual motion sensor called "ground-floor", that has state "presence" as long as any of the sensors on the ground floor is tripped.</li>
+<li>a virtual temperature sensor that is set by a controller as the averaga value of all temperature sensors in a room.</li>
+</ul>
+<p>By implementing the optional <a href="#raw"><code>raw</code> property</a> the sensor values become settable, and hence the same profile can be used as a virtual sensor.</p>
+<h2 id="homie-sensor-binary10">homie-sensor-binary/1/0</h2>
+<p>This is the common version if no specific profile is available. The profile name is: <code>homie-sensor-binary/1/0</code>.</p>
+<h3 id="required-properties">Required properties</h3>
+<h4 id="value">value</h4>
+<p>The <code>value</code> property (required) is the property of type <code>boolean</code> that holds the sensor value (after applying the <code>invert</code> logic).</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>value</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>false</code></td>
+<td>virtual sensors can use the <code>raw</code> property to set values.</td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td></td>
+<td>the <code>format</code> attribute SHOULD be specified to add labels for the <code>false</code> and <code>true</code> values.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>boolean</code>"</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="optional-properties">Optional properties</h3>
+<h4 id="raw">raw</h4>
+<p>The <code>raw</code> property (optional) is the property that holds the raw sensor value, before inverting.</p>
+<p><strong>Note:</strong>: This property becomes REQUIRED when any of the following properties are present; <a href="#raw-topic"><code>raw-topic</code></a> or <a href="#invert"><code>invert</code></a>.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>raw</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code>/<code>false</code></td>
+<td>mostly non-settable, except for virtual sensors.</td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>boolean</code>"</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="raw-topic">raw-topic</h4>
+<p>The "<code>raw-topic</code>" property (optional) is a MQTT topic where the raw-value should be fetched (by subscribing to it). If "<code>raw-topic</code>" is present
+the "<code>raw</code>" property MUST also be present (and MAY be settable).
+If the value is set to an empty string, then the topic subscription should be cancelled.</p>
+<p>The behaviour when receiving a value update from the subscription should be as if the "<code>raw</code>" property was settable,
+and received a value on its "<code>/set</code>" topic. See <a href="#topic-falsy"><code>topic-falsy</code></a> on how to interpret received values from the subscription.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>raw-topic</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td>n.a.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="topic-falsy">topic-falsy</h4>
+<p>The "<code>topic-falsy</code>" property (optional) takes a comma separated list of values that are considered a boolean <code>false</code>.
+Any value recieved over the topic indicated by "<code>topic-falsy</code>", is checked against this list. If there is a match
+the value is considered a boolean <code>false</code>, otherwise a boolean <code>true</code>. Leading- and trailing whitespace is significant, and
+the values are case-sensitive.</p>
+<p>If "<code>topic-falsy</code>" is present the "<code>raw-topic</code>" property MUST also be present. If "<code>topic-falsy</code>" is not present then
+only a string "<code>false</code>" is considered a falsy value.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>topic-falsy</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td><code>string</code></td>
+<td></td>
+</tr>
+<tr>
+<td>unit</td>
+<td>n.a.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="invert">invert</h4>
+<p>The <code>invert</code> property (optional) is used to invert the raw sensor value.</p>
+<table>
+<thead>
+<tr>
+<th>attributes</th>
+<th>value</th>
+<th>remark</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>property-id</td>
+<td>"<code>invert</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>settable</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>retained</td>
+<td><code>true</code></td>
+<td></td>
+</tr>
+<tr>
+<td>type</td>
+<td>"<code>boolean</code>"</td>
+<td></td>
+</tr>
+<tr>
+<td>format</td>
+<td>"<code>no,yes</code>"</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="homie-sensor-power-switch10">homie-sensor-power-switch/1/0</h2>
+<p>The profile name is: <code>homie-sensor-power-switch/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-binary10"><code>homie-sensor-binary/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>format</code> attribute of the <code>value</code> property MUST be <code>"off,on"</code>.</li>
+</ul>
+<h2 id="homie-sensor-window10">homie-sensor-window/1/0</h2>
+<p>The profile name is: <code>homie-sensor-window/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-binary10"><code>homie-sensor-binary/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>format</code> attribute of the <code>value</code> property MUST be <code>"closed,open"</code>.</li>
+</ul>
+<h2 id="homie-sensor-valve10">homie-sensor-valve/1/0</h2>
+<p>The profile name is: <code>homie-sensor-valve/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-binary10"><code>homie-sensor-binary/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>format</code> attribute of the <code>value</code> property MUST be <code>"closed,open"</code>.</li>
+</ul>
+<h2 id="homie-sensor-presence10">homie-sensor-presence/1/0</h2>
+<p>The profile name is: <code>homie-sensor-presence/1/0</code></p>
+<p>The implementation is identical to the <a href="#homie-sensor-binary10"><code>homie-sensor-binary/1/0</code></a> capability with the
+following modifications:</p>
+<ul>
+<li>the <code>format</code> attribute of the <code>value</code> property MUST be <code>"no-presence,presence"</code>.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../cap-sensors-numeric/" class="btn btn-neutral float-left" title="Capability: Sensor - Numeric"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cap-switch/" class="btn btn-neutral float-right" title="Capability: Switch">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../cap-sensors-numeric/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cap-switch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

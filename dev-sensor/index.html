@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Device: Sensor - Homie5 Profiles</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Device: Sensor";
+        var mkdocs_page_input_path = "dev-sensor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Homie5 Profiles
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction to Homie Profiles</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Device: Sensor</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sensor-introduction">Sensor introduction</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#profile-name">Profile name</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nodes">Nodes</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-power-switch/">Device: Power Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-light-dimmable/">Device: Dimmable Light</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dev-shutter/">Device: Shutter</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-action/">Capability: Action</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-inputs/">Capability: Inputs</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-numeric/">Capability: Sensor - Numeric</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-sensors-binary/">Capability: Sensor - Binary</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-switch/">Capability: Switch</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cap-level/">Capability: Level-actor</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../LICENSE/">License</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../old_stuff/">older stuff to review, move, or delete</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Homie5 Profiles</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Device: Sensor</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="device-sensor">Device: Sensor</h1>
+<p>This device description describes a sensor device containing one or more sensors.</p>
+<h2 id="sensor-introduction">Sensor introduction</h2>
+<p>A sensor is a device that contains one or more sensor capabilities. These devices come in many forms. Such as single sensors, multi-sensors, or virtual ones. Many actors also contain sensors capabilities. However sensor devices do generally not contain actor capabilities.</p>
+<h2 id="profile-name">Profile name</h2>
+<p>The profile for this device is <code>homie-sensor/1/0</code>. It is located in the device description JSON document in the device level <code>$profile</code> attribute, and the <code>$profile</code> topic.</p>
+<h2 id="examples">Examples</h2>
+<p>Description:</p>
+<pre><code class="language-json">{
+  &quot;homie&quot;: &quot;5.0&quot;,
+  &quot;name&quot;: &quot;Living sensor&quot;,
+  &quot;version&quot;: 3,
+  &quot;$profile&quot;: [&quot;homie-sensor/1/0&quot;],
+  &quot;nodes&quot;: {
+
+    &quot;presence&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-presence/1/0&quot;],
+      ...
+    },
+    &quot;temperature&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-temperature/1/0&quot;],
+      ...
+    },
+    &quot;light&quot;: {
+      &quot;$profile&quot;: [&quot;homie-sensor-light/1/0&quot;],
+      ...
+    }
+
+  }
+}
+</code></pre>
+<p>Topics:</p>
+<pre><code>homie/5/multi-sensor/$profile/homie-sensor/1 → &quot;0&quot;
+</code></pre>
+<h2 id="nodes">Nodes</h2>
+<p>This device-profile MUST implement at least one of the following capability-profiles:</p>
+<table>
+<thead>
+<tr>
+<th>Node-ID</th>
+<th>Capability-Profile</th>
+<th>required</th>
+<th>additional<br/>requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>power-switch</td>
+<td><a href="../cap-sensors-binary/#homie-sensor-power-switch10">homie-sensor-power-switch/1/0</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>window</td>
+<td><a href="../cap-sensors-binary/#homie-sensor-window10">homie-sensor-window/1/0</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>valve</td>
+<td><a href="../cap-sensors-binary/#homie-sensor-valve10">homie-sensor-valve/1/0</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>presence</td>
+<td><a href="../cap-sensors-binary/#homie-sensor-presence10">homie-sensor-presence/1/0</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>temperature</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-temperature10">homie-sensor-temperature</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>volume</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-volume10">homie-sensor-volume</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>volt</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-volt10">homie-sensor-volt</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>current</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-current10">homie-sensor-current</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>power</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-power10">homie-sensor-power</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>energy</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-energy10">homie-sensor-energy</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>frequency</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-frequency10">homie-sensor-frequency</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>battery</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-battery10">homie-sensor-battery</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>distance</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-distance10">homie-sensor-distance</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>speed</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-speed10">homie-sensor-speed</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>pressure</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-pressure10">homie-sensor-pressure</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>light</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-light10">homie-sensor-light</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>gas-co</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-co10">homie-sensor-gas-co</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>gas-co2</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-co210">homie-sensor-gas-co2</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>gas-ch4</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-ch410">homie-sensor-gas-ch4</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>gas-voc</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-gas-voc10">homie-sensor-gas-voc</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+<tr>
+<td>humidity</td>
+<td><a href="../cap-sensors-numeric/#homie-sensor-humidity10">homie-sensor-humidity</a></td>
+<td>no</td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>Additional nodes MAY be added to the device.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Introduction to Homie Profiles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../dev-power-switch/" class="btn btn-neutral float-right" title="Device: Power Switch">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../dev-power-switch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
